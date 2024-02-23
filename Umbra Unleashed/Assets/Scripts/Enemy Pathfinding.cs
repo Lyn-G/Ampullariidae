@@ -18,5 +18,8 @@ public class EnemyPathfinding : MonoBehaviour
     void Update()
     {
         agent.destination = player.position;
+        if ( Input.GetKeyDown(KeyCode.Space) ) {
+            GameObject.Find("EnemyManager").GetComponent<enemyManagerScript>().despawn(this.gameObject);
+        }
     }
 }
