@@ -12,12 +12,18 @@ public class CameraFollower : MonoBehaviour
 
     public float moveSpeed;
     public Rigidbody playerBody;
+    public SpriteRenderer playerSprite;
+    private bool flipped = false;
     // Start is called before the first frame update
     void Start()
     {
         if (playerBody == null)
         {
             playerBody = GetComponent<Rigidbody>();
+        }
+        if (playerSprite == null)
+        {
+            playerSprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         }
         playerBody.freezeRotation = true;
     }
@@ -52,10 +58,28 @@ public class CameraFollower : MonoBehaviour
     //move the player
     private void MovePlayer()
     {
+        if(horizontalInput > 0 && flipped || horizontalInput < 0 && !flipped)
+        {
+            FlipSprite();
+        }
         //calculate direction
         moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
 
         playerBody.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+    }
+
+    private void FlipSprite()
+    {
+        if (!flipped)
+        {
+            playerSprite.flipX = true;
+        }
+        else
+        {
+            playerSprite.flipX = false;
+        }
+
+        flipped = !flipped;
     }
 
 
