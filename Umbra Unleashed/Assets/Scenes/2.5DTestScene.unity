@@ -10712,10 +10712,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1128148477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9cae1611da146748b0303987e1d1180, type: 3}
+  m_Script: {fileID: 11500000, guid: 83065dfc20871624b8c7fb17722767ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  moveSpeed: 1
+  playerBody: {fileID: 1128148480}
+  playerSprite: {fileID: 1128148479}
 --- !u!1001 &1132488125
 PrefabInstance:
   m_ObjectHideFlags: 0
