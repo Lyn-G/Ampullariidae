@@ -1,10 +1,17 @@
+using System.Collections;
 using UnityEngine;
+
+
+//last edited by: liza
+
+//changes made: added InputCheck coroutine. Checks for attack/spell input every 0.1s.
 
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5.0f; // Adjust the speed of the player movement
     private Rigidbody rb; // Reference to the Rigidbody component
     private Vector3 defaultScale; // To store the original scale of the player
+    public GameObject currentWeapon; //stores the current weapon that the player is holding, to account for what animation/attack is used.
 
     void Start()
     {
@@ -12,6 +19,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         // Store the original local scale of the player
         defaultScale = transform.localScale;
+
+        StartCoroutine(InputCheck());
     }
 
     void Update()
@@ -28,6 +37,20 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(transform.position + movement * speed * Time.deltaTime);
             FlipSprite(moveHorizontal);
         }
+    }
+
+    //runs every 0.1s, checks to see if attack keys were entered
+    IEnumerator InputCheck()
+    {
+        while (true)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Debug.Log("Attack 1");
+            }
+            yield return new WaitForSeconds(0.02f);
+        }
+        
     }
 
     bool IsPathClear(Vector3 direction)
