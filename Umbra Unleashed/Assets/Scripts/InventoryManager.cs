@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BackpackToggle : MonoBehaviour
+public class InventoryManager : MonoBehaviour
 {
     public GameObject panel; // Assign your panel GameObject here in the inspector
     private bool isOpen = false;
@@ -18,5 +18,11 @@ public class BackpackToggle : MonoBehaviour
             isOpen = !isOpen;
             panel.SetActive(isOpen);
         }
+    }
+
+    public void AddItem(string itemName, int quantity, Sprite itemSprite)
+    {
+        // Add the item to the inventory
+        Debug.Log("Added " + quantity + " " + itemName + " (" + itemSprite+ ") to the inventory");
     }
 }
