@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2934195472176936103}
   - component: {fileID: 6379970170728889178}
   - component: {fileID: 4461355433035149175}
-  - component: {fileID: 1941959638192438795}
+  - component: {fileID: 8901745823614725256}
   m_Layer: 5
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1941959638192438795
+--- !u!114 &8901745823614725256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,6 +96,7 @@ MonoBehaviour:
   itemSprite: {fileID: 0}
   isFull: 0
   quantityText: {fileID: 3689015217433180954}
+  quantityTextObject: {fileID: 8227795805110714947}
   itemImage: {fileID: 3649353020048065795}
 --- !u!1 &286595957578326607
 GameObject:

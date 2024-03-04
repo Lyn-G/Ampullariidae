@@ -13,6 +13,7 @@ public class ItemSlot : MonoBehaviour
 
     //=============Item Slot============//
     [SerializeField] private TMP_Text quantityText;
+    [SerializeField] private GameObject quantityTextObject; // This is the object that holds the quantity text and is set to active when the item is added
     [SerializeField] private Image itemImage;
 
     public void AddItem(string itemName, int quantity, Sprite itemSprite)
@@ -22,7 +23,7 @@ public class ItemSlot : MonoBehaviour
         this.itemSprite = itemSprite;
         itemImage.sprite = itemSprite;
         quantityText.text = quantity.ToString();
-        quantityText.enabled = true;
+        quantityTextObject.SetActive(true); // Set the quantity text object to active
         isFull = true;
     }
 }
