@@ -22,7 +22,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
+    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
     {
         // Add the item to the inventory
         Debug.Log("Added " + quantity + " " + itemName + " (" + itemSprite+ ") to the inventory");
@@ -30,12 +30,18 @@ public class InventoryManager : MonoBehaviour
 
         for (int i = 0; i < itemSlots.Length; i++)
         {
-            if (!itemSlots[i].isFull)
+            if (!itemSlots[i].isFull && itemSlots[i].itemName == itemName||itemSlots[i].quantity == 0)
             {
-                itemSlots[i].AddItem(itemName, quantity, itemSprite, itemDescription);
-                return;
+                int leftOverItems = itemSlots[i].AddItem(itemName, quantity, itemSprite, itemDescription);
+                if(leftOverItems>0)
+                {
+                    leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription);//Recursive call to add the left over items
+                    
+                }
+                return leftOverItems;
             }
         }
+        return quantity;
     }
      public void DeselectAll()
     {
