@@ -36,4 +36,12 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+     public void DeselectAll()
+    {
+        for (int i = 0; i < itemSlots.Length; i++)
+        {
+            itemSlots[i].selectedShader.SetActive(false);
+            itemSlots[i].isSelected = false;
+        }
+    }
 }
