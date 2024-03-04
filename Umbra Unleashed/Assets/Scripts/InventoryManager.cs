@@ -22,16 +22,17 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AddItem(string itemName, int quantity, Sprite itemSprite)
+    public void AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
     {
         // Add the item to the inventory
         Debug.Log("Added " + quantity + " " + itemName + " (" + itemSprite+ ") to the inventory");
+        Debug.Log("Item Description: " + itemDescription);
 
         for (int i = 0; i < itemSlots.Length; i++)
         {
             if (!itemSlots[i].isFull)
             {
-                itemSlots[i].AddItem(itemName, quantity, itemSprite);
+                itemSlots[i].AddItem(itemName, quantity, itemSprite, itemDescription);
                 return;
             }
         }

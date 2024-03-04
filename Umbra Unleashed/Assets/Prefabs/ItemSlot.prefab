@@ -95,11 +95,16 @@ MonoBehaviour:
   quantity: 0
   itemSprite: {fileID: 0}
   isFull: 0
+  itemDescription: 
   quantityText: {fileID: 3689015217433180954}
   quantityTextObject: {fileID: 8227795805110714947}
   itemImage: {fileID: 3649353020048065795}
+  itemDescriptionImage: {fileID: 0}
+  itemNameText: {fileID: 0}
+  itemDescriptionText: {fileID: 0}
   selectedShader: {fileID: 286595957578326607}
   isSelected: 0
+  emptySlotSprite: {fileID: 21300000, guid: c135f80af3d032849b84dc017167675d, type: 3}
 --- !u!1 &286595957578326607
 GameObject:
   m_ObjectHideFlags: 0
