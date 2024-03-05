@@ -11,15 +11,20 @@ public class ItemSO : ScriptableObject
     public AttributeToChange attributeToChange = new AttributeToChange();
     public int attributeChangeAmount;
 
-    public void UseItem()
+    public bool UseItem()
     {
-        if (statToChange == StatToChange.Health)
+        PlayerStats stats = GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>();
+        bool isUsable = false;
+
+        if (statToChange == StatToChange.Health && stats.health < stats.maxHealth)
         {
-            GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().ChangeHealth(statChangeAmount);
+            stats.ChangeHealth(statChangeAmount);
+            isUsable = true;
         }
-        else if (statToChange == StatToChange.Mana)
+        else if (statToChange == StatToChange.Mana && stats.mana < stats.maxMana)
         {
-            GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().ChangeMana(statChangeAmount);
+            stats.ChangeMana(statChangeAmount);
+            isUsable = true;
         }
         else if (statToChange == StatToChange.Attack)
         {
@@ -45,6 +50,7 @@ public class ItemSO : ScriptableObject
         {
             GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().ChangeCharisma(attributeChangeAmount);
         }
+        return isUsable;
     }
 
     public enum StatToChange

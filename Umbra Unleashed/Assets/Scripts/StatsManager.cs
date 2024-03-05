@@ -13,8 +13,9 @@ public class PlayerStats : MonoBehaviour
     public TMP_Text charismaText;
 
     // Add other stats and attributes here
-
+    public int maxHealth;
     public int health;
+    public int maxMana;
     public int mana;
     public int attack;
     public int defense;
@@ -41,6 +42,10 @@ public class PlayerStats : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         health += amount;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
         healthText.text = "Health: " + health.ToString();
         // Update UI
     }
@@ -48,6 +53,10 @@ public class PlayerStats : MonoBehaviour
     public void ChangeMana(int amount)
     {
         mana += amount;
+        if (mana > maxMana)
+        {
+            mana = maxMana;
+        }
         manaText.text = "Mana: " + mana.ToString();
         // Update UI
     }

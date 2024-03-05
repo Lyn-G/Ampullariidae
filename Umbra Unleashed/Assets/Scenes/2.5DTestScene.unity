@@ -3868,7 +3868,9 @@ MonoBehaviour:
   dexterityText: {fileID: 352051769}
   intelligenceText: {fileID: 574446128}
   charismaText: {fileID: 941113891}
-  health: 200
+  maxHealth: 20
+  health: 19
+  maxMana: 50
   mana: 50
   attack: 10
   defense: 5

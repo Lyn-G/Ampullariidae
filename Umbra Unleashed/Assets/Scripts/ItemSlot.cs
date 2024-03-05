@@ -12,7 +12,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public Sprite itemSprite;
     public bool isFull;
     public string itemDescription;
-    [SerializeField]private int maxNumberOfItems;
+    [SerializeField] private int maxNumberOfItems;
 
     //=============Item Slot============//
     [SerializeField] private TMP_Text quantityText;
@@ -53,12 +53,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
                 quantityText.text = maxNumberOfItems.ToString();
                 quantityTextObject.SetActive(true); // Set the quantity text object to active
                 isFull = true;
-            
 
-            //Return the left over items
-            int extraItems = this.quantity - maxNumberOfItems;
-            this.quantity = maxNumberOfItems;
-            return extraItems;
+
+                //Return the left over items
+                int extraItems = this.quantity - maxNumberOfItems;
+                this.quantity = maxNumberOfItems;
+                return extraItems;
             }
 
             //Update the quantity text
@@ -87,24 +87,37 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     }
 
     private void OnLeftClick()
-    {    
-        if(isSelected)
+    {   
+        
+        if (isSelected)
         {
-            inventoryManager.UseItem(itemName);
+            bool isUsable = inventoryManager.UseItem(itemName);
+            Debug.Log("isUsable: " + isUsable);
+            if (isUsable)
+            {   
+                
+                this.quantity--;
+                quantityText.text = this.quantity.ToString();
+                if (this.quantity <= 0)
+                {
+                    EmptySlot();
+                }
+            }
         }
-
-        inventoryManager.DeselectAll();
-        Debug.Log("Left click on " + itemName);
-        selectedShader.SetActive(true);
-        isSelected = true;
-        itemDescriptionImage.sprite = itemSprite;
-        itemNameText.text = itemName;
-        itemDescriptionText.text = itemDescription;
-        if (itemDescriptionImage.sprite == null)
-        {
-            itemDescriptionImage.sprite = emptySlotSprite;
+        else
+        {   
+            inventoryManager.DeselectAll();
+            Debug.Log("Left click on " + itemName);
+            selectedShader.SetActive(true);
+            isSelected = true;
+            itemDescriptionImage.sprite = itemSprite;
+            itemNameText.text = itemName;
+            itemDescriptionText.text = itemDescription;
+            if (itemDescriptionImage.sprite == null)
+            {
+                itemDescriptionImage.sprite = emptySlotSprite;
+            }
         }
-
     }
 
     private void OnRightClick()
@@ -112,5 +125,16 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         Debug.Log("Right click on " + itemName);
     }
 
+    public void EmptySlot()
+    {
+        itemName = "";
+        quantity = 0;
+        itemSprite = emptySlotSprite;
+        itemDescription = "";
+        isFull = false;
+        quantityText.text = "";
 
+        quantityTextObject.SetActive(false);
+        itemImage.sprite = emptySlotSprite;
+    }
 }
