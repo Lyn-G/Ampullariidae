@@ -7,6 +7,7 @@ public class InventoryManager : MonoBehaviour
 
     public ItemSlot[] itemSlots; // Assign your item slots here in the inspector
 
+    public ItemSO[] itemSOs; // Assign your Scriptable Items here in the inspector
     void Start()
     {
         // Initialize isOpen based on the panel's initial active state
@@ -19,6 +20,18 @@ public class InventoryManager : MonoBehaviour
         {
             isOpen = !isOpen;
             panel.SetActive(isOpen);
+        }
+    }
+
+    public void UseItem(string itemName)
+    {
+        for (int i = 0; i < itemSOs.Length; i++)
+        {
+            if (itemSOs[i].itemName == itemName)
+            {
+                itemSOs[i].UseItem();
+                return;
+            }
         }
     }
 
