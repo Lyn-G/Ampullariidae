@@ -11,6 +11,17 @@ public class Item : MonoBehaviour
 
     private InventoryManager inventoryManager;
 
+    //Getters for the item's name, quantity, sprite, and description
+    public string GetItemName() => itemName;
+    public int GetQuantity() => quantity;
+    public Sprite GetSprite() => sprite;
+    public string GetItemDescription() => itemDescription;
+
+    //Setters for the item's name, quantity, sprite, and description
+    public void SetItemName(string itemName) => this.itemName = itemName;
+    public void SetQuantity(int quantity) => this.quantity = quantity;
+    public void SetSprite(Sprite sprite) => this.sprite = sprite;
+    public void SetItemDescription(string itemDescription) => this.itemDescription = itemDescription;
     // Start is called before the first frame update
     void Start()
     {
