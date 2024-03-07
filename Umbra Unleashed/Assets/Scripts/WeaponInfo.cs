@@ -6,7 +6,7 @@ public class WeaponInfo : MonoBehaviour
 {
 
     //function to be attached to the weapon GameObject that the player has
-    //collects the current weapon's WeaponData based on its name
+    //collects the current weapon's WeaponData based on its name - aka - the sprite attached to the gameObject.
 
     //it will use the name to get the weapon info
     public string spriteName;

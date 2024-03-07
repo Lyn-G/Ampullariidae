@@ -48,15 +48,15 @@ public class PlayerController : MonoBehaviour
         while (true)
         {
             
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 Debug.Log("Using attack: " + currentWeapon.skill1);
             }
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 Debug.Log("Using attack: " + currentWeapon.skill2);
             }
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 Debug.Log("Using attack: " + currentWeapon.skill3);
             }
