@@ -10,7 +10,7 @@ public class WeaponInfo : MonoBehaviour
 
     //it will use the name to get the weapon info
     public string spriteName;
-    public WeaponHandling.WeaponData weaponData;
+    public static WeaponHandling.WeaponData weaponData;
 
     void Start()
     {
@@ -25,13 +25,15 @@ public class WeaponInfo : MonoBehaviour
             spriteName = this.gameObject.GetComponent<SpriteRenderer>().sprite.name;
             weaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == spriteName);
         }
-        //if there isn't a current weapon equipped, just use your bare hands
+        //if there isn't a current weapon equipped, just use your bare hands, but also, add that damn sprite renderer
         else
         {
             weaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == "bare_hands");
+            this.gameObject.AddComponent<SpriteRenderer>().sprite.name = "bare_hands"; //TEMP: CHANGE LATER
         }
     }
 
+    //returns weaponData
     public WeaponHandling.WeaponData GetWeaponData()
     {
         return weaponData;

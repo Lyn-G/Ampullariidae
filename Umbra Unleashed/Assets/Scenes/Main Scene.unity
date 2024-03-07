@@ -188,6 +188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 3099931794631619388, guid: b422a8a5710411a4ab7ee63b38e42b93, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 1400906978}
     - target: {fileID: 3903698956369159700, guid: b422a8a5710411a4ab7ee63b38e42b93, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -254,17 +258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: 
-  weaponData:
-    type: 
-    spriteName: 
-    name: 
-    minPower: 0
-    maxPower: 0
-    range: 
-    skill1: 
-    skill2: 
-    skill3: 
-    flavorText: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

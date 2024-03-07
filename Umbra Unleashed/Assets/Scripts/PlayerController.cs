@@ -6,7 +6,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f; // Adjust the speed of the player movement
     public Rigidbody rb; // Reference to the Rigidbody component
     private Vector3 defaultScale; // To store the original scale of the player
-    public WeaponHandling.WeaponData currentWeapon; //stores the current weapon that the player is holding, to account for what animation/attack is used.
+    public WeaponHandling.WeaponData currentWeapon; //stores the current weapon that the player is holding's data, to account for what animation/attack is used.
+    public GameObject weapon; //the actual weapon game object with the sprite renderer on it
 
 
     void Start()
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
     private void LoadWeaponData()
     {
-        currentWeapon = transform.Find("Weapon").GetComponent<WeaponInfo>().GetWeaponData();
+        currentWeapon = weapon.GetComponent<WeaponInfo>().GetWeaponData();
     }
 
     bool IsPathClear(Vector3 direction)
