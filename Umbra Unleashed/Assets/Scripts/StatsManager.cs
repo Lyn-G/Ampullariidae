@@ -28,8 +28,8 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        healthText.text = "Health: " + health.ToString();
-        manaText.text = "Mana: " + mana.ToString();
+        healthText.text = "Health: " + health.ToString()+ "/" + maxHealth.ToString();
+        manaText.text = "Mana: " + mana.ToString()+ "/" + maxMana.ToString();
         attackText.text = "Attack: " + attack.ToString();
         defenseText.text = "Defense: " + defense.ToString();
         strengthText.text = "Strength: " + strength.ToString();
