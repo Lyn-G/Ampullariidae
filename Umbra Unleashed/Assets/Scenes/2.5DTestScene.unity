@@ -13475,7 +13475,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7811390086773378945, guid: 8d4fc47232dac4f4b841dcc6fbb43c97, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1285467386}
   m_SourcePrefab: {fileID: 100100000, guid: 8d4fc47232dac4f4b841dcc6fbb43c97, type: 3}
 --- !u!4 &1115127406 stripped
 Transform:
@@ -13624,8 +13627,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
+  rb: {fileID: 0}
   currentWeapon:
     type: 
+    spriteName: 
     name: 
     minPower: 0
     maxPower: 0
@@ -13634,6 +13639,30 @@ MonoBehaviour:
     skill2: 
     skill3: 
     flavorText: 
+  weapon: {fileID: 1285467384}
+--- !u!136 &1128148482
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128148477}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.55
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.06, z: 0}
 --- !u!1001 &1132488125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14995,6 +15024,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5056268309144620741, guid: 027adc6a4ccb7af4f8a8a59dcf6fda86, type: 3}
   m_PrefabInstance: {fileID: 1271217433}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1285467384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7811390086773378945, guid: 8d4fc47232dac4f4b841dcc6fbb43c97, type: 3}
+  m_PrefabInstance: {fileID: 1115127405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1285467386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285467384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b985bb3f4e824d4bb7bcb3f7423777d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteName: turing_rod
 --- !u!1 &1287626154
 GameObject:
   m_ObjectHideFlags: 0
@@ -25183,3 +25230,9 @@ SceneRoots:
   - {fileID: 1732185095}
   - {fileID: 1521605726}
   - {fileID: 6195099242246759547}
+  - {fileID: 39708741}
+  - {fileID: 266922291}
+  - {fileID: 1726322517}
+  - {fileID: 1834832853}
+  - {fileID: 2117589906}
+  - {fileID: 2117750623}

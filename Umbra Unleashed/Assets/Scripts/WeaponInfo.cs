@@ -24,6 +24,7 @@ public class WeaponInfo : MonoBehaviour
         {
             spriteName = this.gameObject.GetComponent<SpriteRenderer>().sprite.name;
             weaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == spriteName);
+            Debug.Log("WeaponData loaded: " + weaponData.spriteName+ " flavor text: " + weaponData.flavorText);
         }
         //if there isn't a current weapon equipped, just use your bare hands, but also, add that damn sprite renderer
         else
