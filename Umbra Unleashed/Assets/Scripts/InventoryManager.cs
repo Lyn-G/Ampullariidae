@@ -68,7 +68,7 @@ public class InventoryManager : MonoBehaviour
             }
             return quantity;
         }
-        else //If the item is equipment
+        else //If the item is fist/blade/tome/staff
         {
             for (int i = 0; i < equipmentSlots.Length; i++)
             {
@@ -106,6 +106,7 @@ public class InventoryManager : MonoBehaviour
 public enum ItemType
 {
     Consumable,
-    Equipment,
+    Melee,
+    Range,
     Collectible,
 };

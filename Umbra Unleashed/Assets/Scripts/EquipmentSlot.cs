@@ -25,7 +25,8 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     private InventoryManager inventoryManager;
     public Sprite emptySlotSprite;
 
-
+    //=============Equipped Slot============//
+    [SerializeField] private EquippedSlot rangeSlot, meleeSlot;
 
     private void Start()
     {
@@ -74,17 +75,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
 
         if (isSelected)
         {
-            bool isUsable = inventoryManager.UseItem(itemName);
-            Debug.Log("isUsable: " + isUsable);
-            if (isUsable)
-            {
-
-                this.quantity--;
-                if (this.quantity <= 0)
-                {
-                    EmptySlot();
-                }
-            }
+            EquipGear();
         }
         else
         {
@@ -137,5 +128,18 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
         itemDescription = "";
         isFull = false;
         itemImage.sprite = emptySlotSprite;
+    }
+
+    public void EquipGear()
+    {
+        if (itemType == ItemType.Melee)
+        {
+            meleeSlot.EquipGear(itemSprite, itemName, itemDescription);
+        }
+        if (itemType == ItemType.Range)
+        {
+            rangeSlot.EquipGear(itemSprite, itemName, itemDescription);
+        }
+        EmptySlot();
     }
 }
