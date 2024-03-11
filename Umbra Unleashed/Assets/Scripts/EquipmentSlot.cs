@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler
+public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
 {   //=============Item Data============//
     public string itemName;
     public int quantity;
@@ -13,17 +13,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public bool isFull;
     public string itemDescription;
     public ItemType itemType;
-    [SerializeField] private int maxNumberOfItems;
+
 
     //=============Item Slot============//
     [SerializeField] private TMP_Text quantityText;
     [SerializeField] private GameObject quantityTextObject; // This is the object that holds the quantity text and is set to active when the item is added
     [SerializeField] private Image itemImage;
-
-    //=============Item Description Slot============//
-    public Image itemDescriptionImage;
-    public TMP_Text itemNameText;
-    public TMP_Text itemDescriptionText;
 
     public GameObject selectedShader;
     public bool isSelected;
@@ -31,12 +26,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public Sprite emptySlotSprite;
 
 
+
     private void Start()
     {
         inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
     }
     public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
-    
     {
         //Check if the item slot is empty
         if (!isFull)
@@ -50,23 +45,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             this.itemType = itemType;
 
             //Update the quantity
-            this.quantity += quantity;
-            if (this.quantity >= maxNumberOfItems)
-            {
-                quantityText.text = maxNumberOfItems.ToString();
-                quantityTextObject.SetActive(true); // Set the quantity text object to active
-                isFull = true;
-
-
-                //Return the left over items
-                int extraItems = this.quantity - maxNumberOfItems;
-                this.quantity = maxNumberOfItems;
-                return extraItems;
-            }
-
-            //Update the quantity text
-            quantityText.text = this.quantity.ToString();
-            quantityTextObject.SetActive(true); // Set the quantity text object to active
+            this.quantity = 1;
+            isFull = true; // Set the slot to full
 
             return 0;
         }
@@ -113,13 +93,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             Debug.Log("Left click on " + itemName);
             selectedShader.SetActive(true);
             isSelected = true;
-            itemDescriptionImage.sprite = itemSprite;
-            itemNameText.text = itemName;
-            itemDescriptionText.text = itemDescription;
-            if (itemDescriptionImage.sprite == null)
-            {
-                itemDescriptionImage.sprite = emptySlotSprite;
-            }
         }
     }
 
@@ -160,14 +133,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void EmptySlot()
     {
-        itemName = "";
+        
         quantity = 0;
         itemSprite = emptySlotSprite;
-        itemDescription = "";
+        
         isFull = false;
         quantityText.text = "";
 
         quantityTextObject.SetActive(false);
-        itemImage.sprite = emptySlotSprite;
+        //itemImage.sprite = emptySlotSprite;
     }
 }

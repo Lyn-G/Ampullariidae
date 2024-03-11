@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
     [TextArea][SerializeField] private string itemDescription;
 
     private InventoryManager inventoryManager;
+    public ItemType itemType;
 
     //Getters for the item's name, quantity, sprite, and description
     public string GetItemName() => itemName;
@@ -32,7 +33,7 @@ public class Item : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
+            int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription,itemType);
             if (leftOverItems <= 0)
             {
                 Destroy(gameObject);
