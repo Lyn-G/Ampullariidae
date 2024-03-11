@@ -16,7 +16,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
 
 
     //=============Item Slot============//
-    [SerializeField] private TMP_Text quantityText;
+
     [SerializeField] private GameObject quantityTextObject; // This is the object that holds the quantity text and is set to active when the item is added
     [SerializeField] private Image itemImage;
 
@@ -80,7 +80,6 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
             {
 
                 this.quantity--;
-                quantityText.text = this.quantity.ToString();
                 if (this.quantity <= 0)
                 {
                     EmptySlot();
@@ -99,48 +98,44 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     private void OnRightClick()
     {
         Debug.Log("Right click on " + itemName);
-        //create a new item
-        GameObject itemToDrop = new GameObject(itemName);
-        Item newItem = itemToDrop.AddComponent<Item>();
-        newItem.SetItemName(itemName);
-        newItem.SetQuantity(1);
-        newItem.SetSprite(itemSprite);
-        newItem.SetItemDescription(itemDescription);
-
-        //Create and modify the SR
-        SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
-        sr.sprite = itemSprite;
-        //sr.sortingOrder = 5;
-        //sr.sortingLayerName = "Items";
-
-        //Add a collider
-        itemToDrop.AddComponent<BoxCollider>();
-
-        //Set the position of the item to the player's position's right side
-        itemToDrop.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(2f, 0, 0);
-
-        //set size of the item
-        itemToDrop.transform.localScale = new Vector3(.3f, .3f, .3f);
-
-        //subtract the quantity
-        this.quantity--;
-        quantityText.text = this.quantity.ToString();
-        if (this.quantity <= 0)
+        if (quantity > 0)
         {
+            //create a new item
+            GameObject itemToDrop = new GameObject(itemName);
+            Item newItem = itemToDrop.AddComponent<Item>();
+            newItem.SetItemName(itemName);
+            newItem.SetQuantity(1);
+            newItem.SetSprite(itemSprite);
+            newItem.SetItemDescription(itemDescription);
+            newItem.itemType = itemType;
+
+            //Create and modify the SR
+            SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
+            sr.sprite = itemSprite;
+            //sr.sortingOrder = 5;
+            //sr.sortingLayerName = "Items";
+
+            //Add a collider
+            itemToDrop.AddComponent<BoxCollider>();
+
+            //Set the position of the item to the player's position's right side
+            itemToDrop.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(2f, 0, 0);
+
+            //set size of the item
+            itemToDrop.transform.localScale = new Vector3(.3f, .3f, .3f);
+
+            //subtract the quantity
+            this.quantity = 0;
             EmptySlot();
         }
     }
 
     public void EmptySlot()
     {
-        
+        itemName = "";
         quantity = 0;
-        itemSprite = emptySlotSprite;
-        
+        itemDescription = "";
         isFull = false;
-        quantityText.text = "";
-
-        quantityTextObject.SetActive(false);
-        //itemImage.sprite = emptySlotSprite;
+        itemImage.sprite = emptySlotSprite;
     }
 }

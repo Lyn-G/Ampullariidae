@@ -95,6 +95,11 @@ public class InventoryManager : MonoBehaviour
             itemSlots[i].selectedShader.SetActive(false);
             itemSlots[i].isSelected = false;
         }
+        for (int i = 0; i < equipmentSlots.Length; i++)
+        {
+            equipmentSlots[i].selectedShader.SetActive(false);
+            equipmentSlots[i].isSelected = false;
+        }
     }
 }
 
