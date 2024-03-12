@@ -7,7 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPause = false;
     public GameObject pauseMenuUI;
-    public GameObject mainMenuUI;
+    // public GameObject mainMenuUI;
 
     // Update is called once per frame
     void Update()
@@ -33,16 +33,16 @@ public class PauseMenu : MonoBehaviour
         GameIsPause = true;
     }
 
-    public void LoadMainMenu() {
-        Debug.Log("loading menu");
-        pauseMenuUI.SetActive(false);
-        mainMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-    }
+    // public void LoadMainMenu() {
+    //     Debug.Log("loading menu");
+    //     pauseMenuUI.SetActive(false);
+    //     mainMenuUI.SetActive(true);
+    //     Time.timeScale = 0f;
+    // }
 
-    public void QuitMenu() {
-        pauseMenuUI.SetActive(false);
-        Debug.Log("quitting game");
-        Application.Quit();
-    }
+    // public void QuitMenu() {
+    //     pauseMenuUI.SetActive(false);
+    //     Debug.Log("quitting game");
+    //     Application.Quit();
+    // }
 }
