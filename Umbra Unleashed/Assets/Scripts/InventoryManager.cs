@@ -8,7 +8,7 @@ public class InventoryManager : MonoBehaviour
 
     public ItemSlot[] itemSlots; // Assign your item slots here in the inspector
     public EquipmentSlot[] equipmentSlots; // Assign your equipment slots here in the inspector
-
+    public EquippedSlot[] equippedSlots; // Assign your equipped slots here in the inspector
     public ItemSO[] itemSOs; // Assign your Scriptable Items here in the inspector
     void Start()
     {
@@ -99,6 +99,11 @@ public class InventoryManager : MonoBehaviour
         {
             equipmentSlots[i].selectedShader.SetActive(false);
             equipmentSlots[i].isSelected = false;
+        }
+        for (int i = 0; i < equippedSlots.Length; i++)
+        {
+            equippedSlots[i].selectedShader.SetActive(false);
+            equippedSlots[i].isSelected = false;
         }
     }
 }
