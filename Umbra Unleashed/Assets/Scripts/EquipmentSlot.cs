@@ -83,6 +83,9 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
             Debug.Log("Left click on " + itemName);
             selectedShader.SetActive(true);
             isSelected = true;
+
+            // Fetch and display weapon stats
+            GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().SelectingWeapon(itemName);
         }
     }
 

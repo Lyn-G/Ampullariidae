@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31c421aee22a4514396a046d05ca2bfe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c135f80af3d032849b84dc017167675d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1950,7 +1950,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d7b4c4fd8a47a0448941500f5a17f35e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c135f80af3d032849b84dc017167675d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4522,6 +4522,14 @@ MonoBehaviour:
   dexterity: 10
   intelligence: 10
   charisma: 10
+  weaponIcon: {fileID: 128612954}
+  skillIcon1: {fileID: 79828414}
+  skillIcon2: {fileID: 1312238224}
+  emptySlotSprite: {fileID: 21300000, guid: c135f80af3d032849b84dc017167675d, type: 3}
+  trainingStaffSprite: {fileID: 21300000, guid: cbf8cf83c60ebac4ebca93b9237e2d7f, type: 3}
+  fistsOfFurySprite: {fileID: 21300000, guid: 01e60020deff41c458569f1c2b54038e, type: 3}
+  posionCloudSprite: {fileID: 21300000, guid: 31c421aee22a4514396a046d05ca2bfe, type: 3}
+  rockThrowSprite: {fileID: 21300000, guid: 6ba754cb9663f6e4682f63f09c8e5c1b, type: 3}
 --- !u!4 &266922291
 Transform:
   m_ObjectHideFlags: 0
@@ -18956,7 +18964,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6ba754cb9663f6e4682f63f09c8e5c1b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c135f80af3d032849b84dc017167675d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -25161,7 +25169,6 @@ GameObject:
   - component: {fileID: 1726322519}
   - component: {fileID: 1726322518}
   - component: {fileID: 1726322520}
-  - component: {fileID: 1726322521}
   m_Layer: 0
   m_Name: Training Staff
   m_TagString: Untagged
@@ -25303,19 +25310,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: cbf8cf83c60ebac4ebca93b9237e2d7f, type: 3}
   itemDescription: '"Basic spellcasting implement"'
   itemType: 2
---- !u!114 &1726322521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1726322515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b985bb3f4e824d4bb7bcb3f7423777d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteName: training_staff
 --- !u!1001 &1728246379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30996,7 +30990,6 @@ GameObject:
   - component: {fileID: 2102285763}
   - component: {fileID: 2102285762}
   - component: {fileID: 2102285761}
-  - component: {fileID: 2102285766}
   m_Layer: 0
   m_Name: Fists of Fury
   m_TagString: Untagged
@@ -31138,19 +31131,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2102285766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2102285760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b985bb3f4e824d4bb7bcb3f7423777d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteName: fists_of_fury
 --- !u!1001 &2105444269
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -27,7 +28,18 @@ public class PlayerStats : MonoBehaviour
     public int intelligence;
     public int charisma;
 
-    // Default values for other stats and attributes
+    // Selected Weapon Icons and Skill Icons
+    public Image weaponIcon;
+    public Image skillIcon1;
+    public Image skillIcon2;
+    public Sprite emptySlotSprite; 
+
+    // Weapon Icons
+    [SerializeField] private Sprite trainingStaffSprite;
+    [SerializeField] private Sprite fistsOfFurySprite;
+    //Skill Icons
+    [SerializeField] private Sprite posionCloudSprite;
+    [SerializeField] private Sprite rockThrowSprite;
 
     private void Start()
     {
@@ -43,6 +55,10 @@ public class PlayerStats : MonoBehaviour
         weaponNameText.text = "";
         weaponPowerText.text = "";
         weaponRangeText.text = "";
+        // Update Weapon and Skill Icon UI
+        weaponIcon.sprite = emptySlotSprite;
+        skillIcon1.sprite = emptySlotSprite;
+        skillIcon2.sprite = emptySlotSprite;
     }   
 
     public void ChangeHealth(int amount)
@@ -112,9 +128,31 @@ public class PlayerStats : MonoBehaviour
     public void SelectingWeapon(string weaponName)
     {
         var weaponData = WeaponHandling.GetWeaponDataByName(weaponName);
+        if(weaponData == null)
+        {
+            Debug.Log("SelectingWeapon: Weapon Data is null");
+            return;
+        }
         weaponNameText.text = weaponData.name;
         weaponPowerText.text = weaponData.minPower.ToString() + " - " + weaponData.maxPower.ToString();
         weaponRangeText.text = weaponData.range;
+        Debug.Log("Updating Weapon Icons...");
+        Debug.Log("Selected Weapon: " + weaponData.name);
+        Debug.Log("Skills: " + weaponData.skill1 + " and " + weaponData.skill2);
+        //Updating Weapon Icon
+        switch(weaponData.name)
+    {
+        case "Training Staff":
+            weaponIcon.sprite = trainingStaffSprite;
+            skillIcon1.sprite = posionCloudSprite;
+            skillIcon2.sprite = rockThrowSprite;
+            break;
+        case "Fists of Fury":
+            weaponIcon.sprite = fistsOfFurySprite;
+            break;
+        // ... and so on for each weapon ...
+    }
+        
     }
 
     public void DeselectingWeapon()
@@ -122,6 +160,12 @@ public class PlayerStats : MonoBehaviour
         weaponNameText.text = "";
         weaponPowerText.text = "";
         weaponRangeText.text = "";
+
+        //Updating Weapon Icon
+        weaponIcon.sprite = emptySlotSprite;
+        //Updating Skill Icons
+        skillIcon1.sprite = emptySlotSprite;
+        skillIcon2.sprite = emptySlotSprite;
     }
 
     public int GetStatValue(string statName)

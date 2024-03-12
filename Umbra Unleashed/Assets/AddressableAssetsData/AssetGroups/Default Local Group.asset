@@ -16,52 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 7c209f6b2ae57674b8ad81003c442333
-  m_SerializeEntries:
-  - m_GUID: 18727110a10c19746a6657075b0f17b5
-    m_Address: Assets/Assets/Sprites/apprentices_wand.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 01e60020deff41c458569f1c2b54038e
-    m_Address: Assets/Assets/Sprites/fists_of_fury.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e78b2823a6b7fe242acd0c56e6f9cb82
-    m_Address: Assets/Assets/Sprites/monks_staff.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6817e871a8195404897c9bd2b7ff450b
-    m_Address: Assets/Assets/Sprites/occult_staff.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 104ce807fba248948949377fbe107b09
-    m_Address: Assets/Assets/Sprites/brass_knuckles_transparent.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3b8eea2c7571b9d469e8b5b2a7c45519
-    m_Address: Assets/Assets/Sprites/power_glove.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 27ebf6b367faf7f48977c0f970d7d4c4
-    m_Address: Assets/Assets/Sprites/spriggan_scepter.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cbf8cf83c60ebac4ebca93b9237e2d7f
-    m_Address: Assets/Assets/Sprites/training_staff.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d7b4c4fd8a47a0448941500f5a17f35e
-    m_Address: Assets/Assets/Sprites/tuning_rod.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4949fd26010f263458025eee4a2bc00f, type: 2}
   m_SchemaSet:
