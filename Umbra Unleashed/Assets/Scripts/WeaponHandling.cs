@@ -33,6 +33,17 @@ public class WeaponHandling : MonoBehaviour
     void Start()
     {
         weaponList = JsonUtility.FromJson<WeaponList>(jsonData.text);
+        foreach (var weapon in weaponList.weapon)
+        {
+            Debug.Log("Loaded weapon: " + weapon.name);
+        }
     }
+
+
+    public static WeaponData GetWeaponDataByName(string weaponName)
+    {
+        return weaponList.weapon.Find(weapon => weapon.name == weaponName);
+    }
+
 }
 

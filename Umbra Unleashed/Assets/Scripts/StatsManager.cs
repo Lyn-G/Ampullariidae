@@ -11,6 +11,9 @@ public class PlayerStats : MonoBehaviour
     public TMP_Text dexterityText;
     public TMP_Text intelligenceText;
     public TMP_Text charismaText;
+    public TMP_Text weaponNameText;
+    public TMP_Text weaponPowerText;
+    public TMP_Text weaponRangeText;
 
     // Add other stats and attributes here
     public int maxHealth;
@@ -36,7 +39,10 @@ public class PlayerStats : MonoBehaviour
         dexterityText.text = "Dexterity: " + dexterity.ToString();
         intelligenceText.text = "Intelligence: " + intelligence.ToString();
         charismaText.text = "Charisma: " + charisma.ToString();
-        // Update UI
+        // Update Weapon Stat UI
+        weaponNameText.text = "";
+        weaponPowerText.text = "";
+        weaponRangeText.text = "";
     }   
 
     public void ChangeHealth(int amount)
@@ -101,5 +107,45 @@ public class PlayerStats : MonoBehaviour
         charisma += amount;
         charismaText.text = "Charisma: " + charisma.ToString();
         // Update UI
+    }
+
+    public void SelectingWeapon(string weaponName)
+    {
+        var weaponData = WeaponHandling.GetWeaponDataByName(weaponName);
+        weaponNameText.text = weaponData.name;
+        weaponPowerText.text = weaponData.minPower.ToString() + " - " + weaponData.maxPower.ToString();
+        weaponRangeText.text = weaponData.range;
+    }
+
+    public void DeselectingWeapon()
+    {
+        weaponNameText.text = "";
+        weaponPowerText.text = "";
+        weaponRangeText.text = "";
+    }
+
+    public int GetStatValue(string statName)
+    {
+        switch (statName)
+        {
+            case "Health":
+                return health;
+            case "Mana":
+                return mana;
+            case "Attack":
+                return attack;
+            case "Defense":
+                return defense;
+            case "Strength":
+                return strength;
+            case "Dexterity":
+                return dexterity;
+            case "Intelligence":
+                return intelligence;
+            case "Charisma":
+                return charisma;
+            default:
+                return 0;
+        }
     }
 }
