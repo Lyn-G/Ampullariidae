@@ -22,11 +22,11 @@ public class coinScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "player")
+        if(collision.gameObject.tag == "Player")
         {
             // release this to the pool
             coinManagerScript.despawn(this.gameObject);
-            // player.GetComponent<playerScript>().moneycount++; // This increases the player's coin count when they collide with the coin. I can't access the player script yet! Make sure to uncomment this line!!!
+            // collision.GetComponent<playerScript>().moneycount++; // This increases the player's coin count when they collide with the coin. I can't access the player script yet! Make sure to uncomment this line!!!
         }
     }
 }
