@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour
             if (hit.collider.tag == "Terrain")
             {
                 // Terrain was hit, movement in this direction is blocked
+                Debug.Log("Terrain detected");
                 return false;
             }
         }

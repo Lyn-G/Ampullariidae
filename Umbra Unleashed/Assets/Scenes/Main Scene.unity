@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8689347699337378594, guid: b422a8a5710411a4ab7ee63b38e42b93, type: 3}
+      propertyPath: spriteName
+      value: Tuning Rod
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
