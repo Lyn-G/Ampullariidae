@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //player movement values
-    public float speed = 5.0f; // Adjust the speed of the player movement
+    public float speed = 20.0f; // Adjust the speed of the player movement
     private float moveHorizontal; //also used for animations
     private float moveVertical; //also used for animations
 
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         // Get the Rigidbody, Animation, SpriteRenderer component from the player game object
         if (rb == null)
         {
-            rb = playerBody.GetComponent<Rigidbody>();
+            rb = GetComponent<Rigidbody>();
         }
         if (anim == null)
         {
@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
         // Check if the path is clear && there is not a current animation before moving
         if (IsPathClear(movement) && attacking == 0)
         {
+            Debug.Log(rb);
             rb.MovePosition(transform.position + movement * speed * Time.deltaTime);
             FlipSprite(moveHorizontal);
         }

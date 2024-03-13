@@ -20,17 +20,16 @@ public class WeaponInfo : MonoBehaviour
     public void LoadWeaponData()
     {
         //separate function for delayed invokation; requires weaponList to already be loaded
-        if (this.gameObject.GetComponent<SpriteRenderer>() != null)
+        if (GetComponent<SpriteRenderer>().sprite != null)
         {
-            spriteName = this.gameObject.GetComponent<SpriteRenderer>().sprite.name;
-            weaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == spriteName);
+            spriteName = GetComponent<SpriteRenderer>().sprite.name;
         }
         //if there isn't a current weapon equipped, just use your bare hands, but also, add that damn sprite renderer
         else
         {
-            weaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == "bare_hands");
-            this.gameObject.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bare_hands");
+            spriteName = "bare_hands";
         }
+        weaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == spriteName);
     }
 
     //returns weaponData
