@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 432c471c05122b24bbd2e0599d9d7ea1
+<<<<<<<< HEAD:Umbra Unleashed/Assets/Assets/Sprites/Resources.meta
+guid: fb2c3725310e5a643b80eeb601efa9e5
+========
+guid: 3fa1aa9db849df8418cd7308ef5284a5
+>>>>>>>> Lynelle:Umbra Unleashed/Assets/Scenes/Lynelle - Health Bar.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
