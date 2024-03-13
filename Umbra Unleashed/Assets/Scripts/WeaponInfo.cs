@@ -30,7 +30,7 @@ public class WeaponInfo : MonoBehaviour
         else
         {
             weaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == "bare_hands");
-            this.gameObject.AddComponent<SpriteRenderer>().sprite.name = "bare_hands"; //TEMP: CHANGE LATER
+            this.gameObject.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bare_hands");
         }
     }
 
@@ -38,6 +38,13 @@ public class WeaponInfo : MonoBehaviour
     public WeaponHandling.WeaponData GetWeaponData()
     {
         return weaponData;
+    }
+
+    //takes any sprite name, returns its weapon data
+    public static WeaponHandling.WeaponData ChooseWeapon(string weaponSpriteName)
+    {
+        WeaponHandling.WeaponData newWeaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == weaponSpriteName);
+        return newWeaponData;
     }
 
 }
