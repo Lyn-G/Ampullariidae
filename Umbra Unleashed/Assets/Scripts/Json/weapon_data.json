@@ -1,0 +1,368 @@
+{
+    "weapon":
+    [
+        {
+            "type": "Fists",
+            "spriteName": "bare_hands",
+            "name": "Bare Hands",
+            "minPower": 1,
+            "maxPower": 5,
+            "range": "Short",
+            "skill1": "Punch",
+            "skill2": "Kick",
+            "skill3": "Block",
+            "flavorText": "Time to build up calluses"
+        },
+
+        {
+            "type": "Fists",
+            "spriteName": "brass_knuckles",
+            "name": "Brass Knuckles",
+            "minPower": 3,
+            "maxPower": 7,
+            "range": "Short",
+            "skill1": "Hammer Fist",
+            "skill2": "Uppercut",
+            "skill3": "Block",
+            "flavorText": "Brawler's weapon of choice"
+        },
+
+        {
+            "type": "Fists",
+            "spriteName": "fists_of_fury",
+            "name": "Fists of Fury",
+            "minPower": 5,
+            "maxPower": 9,
+            "range": "Medium",
+            "skill1": "Hidden Blade",
+            "skill2": "Flying Kick",
+            "skill3": "Smoke Bomb",
+            "flavorText": "Trained by martial arts masters"
+        },
+
+        {
+            "type": "Fists",
+            "spriteName": "power_glove",
+            "name": "Power Glove",
+            "minPower": 7,
+            "maxPower": 11,
+            "range": "Medium",
+            "skill1": "Charge Punch",
+            "skill2": "Launch",
+            "skill3": "Power Stance",
+            "flavorText": "Magic makes you punch harder"
+        },
+
+        {
+            "type": "Fists",
+            "spriteName": "enchanted_mitts",
+            "name": "Enchanted Mitts",
+            "minPower": 9,
+            "maxPower": 13,
+            "range": "medium",
+            "skill1": "Fire Punch",
+            "skill2": "Concussion Blast",
+            "skill3": "Force Field",
+            "flavorText": "Not for use while baking" 
+        },
+
+        {
+            "type": "Fists",
+            "spriteName": "champions_mettle",
+            "name": "Champion's Mettle",
+            "minPower": 10,
+            "maxPower": 15,
+            "range": "Long",
+            "skill1": "Tormentous Tussle",
+            "skill2": "Clash",
+            "skill3": "Earthquake Slam",
+            "flavorText": "Knuckles bloodied by countless rounds in the arena"
+        },
+
+        {
+            "type": "Fists",
+            "spriteName": "gigantic_gauntlets",
+            "name": "Gigantic Gauntlets",
+            "minPower": 15,
+            "maxPower": 20,
+            "range": "All",
+            "skill1": "Crush the Weak",
+            "skill2": "Quick Step Descent",
+            "skill3": "Teleport",
+            "flavorText": "Worn by the giants, who crafted the very ground you stand on" 
+        },
+
+        {
+            "type": "Blade",
+            "spriteName": "wooden_sword",
+            "name": "Wooden Sword",
+            "minPower": 1,
+            "maxPower": 5,
+            "range": "Medium",
+            "skill1": "Thrust",
+            "skill2": "Spin",
+            "skill3": "Block",
+            "flavorText": "Every kid's favorite toy"
+        },
+
+        {
+            "type": "Blade",
+            "spriteName": "basic_sword",
+            "name": "Basic Sword",
+            "minPower": 3,
+            "maxPower": 7,
+            "range": "Medium",
+            "skill1": "Slash",
+            "skill2": "Leg Sweep",
+            "skill3": "Block",
+            "flavorText": "What squires train with"
+        },
+
+        {
+            "type": "Blade",
+            "spriteName": "assassins_dagger",
+            "name": "Assassin's Dagger",
+            "minPower": 5,
+            "maxPower": 9,
+            "range": "Short",
+            "skill1": "Sneak Stab",
+            "skill2": "Backstab",
+            "skill3": "Knife Throw",
+            "flavorText": "From the shadows"
+        },
+
+        {
+            "type": "Blade",
+            "spriteName": "cutlass",
+            "name": "Cutlass",
+            "minPower": 7,
+            "maxPower": 11,
+            "range": "Medium",
+            "skill1": "Swab the Deck",
+            "skill2": "Boarding Party",
+            "skill3": "Parlay",
+            "flavorText": "A seafaring blade that has plundered many a vessel" 
+        },
+
+        {
+            "type": "Blade",
+            "spriteName": "crusaders_longsword",
+            "name": "Crusader's Longsword",
+            "minPower": 9,
+            "maxPower": 13,
+            "range": "Medium",
+            "skill1": "Purge",
+            "skill2": "Smite",
+            "skill3": "Holy Shield",
+            "flavorText": "Keep your oath"
+        },
+
+        {
+            "type": "Blade",
+            "spriteName": "sacrificial_dagger",
+            "name": "Sacrificial Dagger",
+            "minPower": 10,
+            "maxPower": 15,
+            "range": "Long",
+            "skill1": "From the Beyond",
+            "skill2": "Old God's Murmurs",
+            "skill3": "Temple of the Wyrd",
+            "flavorText": "A blade darker than the darkest night" 
+        },
+
+        {
+            "type": "Blade",
+            "spriteName": "buster_sword",
+            "name": "Buster Sword",
+            "minPower": 15,
+            "maxPower": 20,
+            "range": "All",
+            "skill1": "Heave",
+            "skill2": "Momentum",
+            "skill3": "Stand Your Ground",
+            "flavorText": "A huge slab of iron.... how are you even carrying it?"
+        },
+
+        {
+            "type": "Tome",
+            "spriteName": "decayed_dictionary",
+            "name": "Decayed Dictionary",
+            "minPower": 1,
+            "maxPower": 5,
+            "range": "Long",
+            "skill1": "Fireball",
+            "skill2": "Lightning",
+            "skill3": "Magic Shield",
+            "flavorText": "Smells moldy"
+        },
+
+        {
+            "type": "Tome",
+            "spriteName": "dusty_tome",
+            "name": "Dusty Tome",
+            "minPower": 3,
+            "maxPower": 7,
+            "range": "Long",
+            "skill1": "Firebolt",
+            "skill2": "Icicle Throw",
+            "skill3": "Magic Shield",
+            "flavorText": "Makes you sneeze"
+        },
+
+        {
+            "type": "Tome",
+            "spriteName": "barkeeps_bff",
+            "name": "Barkeep's BFF",
+            "minPower": 5,
+            "maxPower": 9,
+            "range": "Medium",
+            "skill1": "Stool Slam",
+            "skill2": "Brew Bomb",
+            "skill3": "Ale Barrel",
+            "flavorText": "This one's on the house"
+        },
+
+        {
+            "type": "Tome",
+            "spriteName": "divining_guide",
+            "name": "Divining Guide",
+            "minPower": 7,
+            "maxPower": 11,
+            "range": "Short",
+            "skill1": "Ghost Grapple",
+            "skill2": "Curse",
+            "skill3": "Sea of Fog",
+            "flavorText": "Contacting the new pantheon has proven to be harder than it should"
+        },
+
+        {
+            "type": "Tome",
+            "spriteName": "planisphere",
+            "name": "Planisphere",
+            "minPower": 9,
+            "maxPower": 13,
+            "range": "Long",
+            "skill1": "Starfall",
+            "skill2": "Meteoric Might",
+            "skill3": "Twilit Cloak",
+            "flavorText": "Stargazing has its perks"
+        },
+
+        {
+            "type": "Tome",
+            "spriteName": "librarians_ledger",
+            "name": "Librarian's Ledger",
+            "minPower": 10,
+            "maxPower": 15,
+            "range": "Short",
+            "skill1": "SHHHHHH!!!",
+            "skill2": "Overdue Fees",
+            "skill3": "Moratorium",
+            "flavorText": "An overdue book comes with consequences"
+        },
+
+        {
+            "type": "Tome",
+            "spriteName": "masters_grimoire",
+            "name": "Master's Grimoire",
+            "minPower": 15,
+            "maxPower": 20,
+            "range": "All",
+            "skill1": "Lunar Blast",
+            "skill2": "Omnidirectional Obliteration",
+            "skill3": "Arcane Mastery",
+            "flavorText": "Exemplary casting requires exemplary pages"
+        },
+
+        {
+            "type": "Staff",
+            "spriteName": "tuning_rod",
+            "name": "Tuning Rod",
+            "minPower": 1,
+            "maxPower": 5,
+            "range": "Long",
+            "skill1": "Poison Cloud",
+            "skill2": "Rock Throw",
+            "skill3": "Magic Shield",
+            "flavorText": "Divination 101"
+        },
+
+        {
+            "type": "Staff",
+            "spriteName": "training_staff",
+            "name": "Training Staff",
+            "minPower": 3,
+            "maxPower": 7,
+            "range": "Medium",
+            "skill1": "Ground Spikes",
+            "skill2": "Gust",
+            "skill3": "Magic Shield",
+            "flavorText": "Basic spellcasting implement"
+        },
+
+        {
+            "type": "Staff",
+            "spriteName": "apprentices_wand",
+            "name": "Apprentice's Wand",
+            "minPower": 5,
+            "maxPower": 9,
+            "range": "Long",
+            "skill1": "Arcane Bolt",
+            "skill2": "Magic Arc",
+            "skill3": "Energy Ward",
+            "flavorText": "Moving up in the world"
+        },
+
+        {
+            "type": "Staff",
+            "spriteName": "spriggan_scepter",
+            "name": "Spriggan Scepter",
+            "minPower": 7,
+            "maxPower": 11,
+            "range": "Long",
+            "skill1": "Vine Choke",
+            "skill2": "Magic Arc",
+            "skill3": "Barkskin",
+            "flavorText": "Nature's guardians have blessed this staff"
+        },
+
+        {
+            "type": "Staff",
+            "spriteName": "occult_staff",
+            "name": "Occult Staff",
+            "minPower": 9,
+            "maxPower": 13,
+            "range": "Long",
+            "skill1": "Summon Skeleton",
+            "skill2": "Corruption",
+            "skill3": "Vitality Drain",
+            "flavorText": "Do not give in to the whispers"
+        },
+
+        {
+            "type": "Staff",
+            "spriteName": "monks_staff",
+            "name": "Monk's Staff",
+            "minPower": 10,
+            "maxPower": 15,
+            "range": "Short",
+            "skill1": "Ki Extraction",
+            "skill2": "Squall of Fists",
+            "skill3": "Perfect Body",
+            "flavorText": "Years of training at a monastery infused into a staff"
+        },
+
+        {
+            "type": "Staff",
+            "spriteName": "staff_of_the_true_magi",
+            "name": "Staff of the True Magi",
+            "minPower": 15,
+            "maxPower": 20,
+            "range": "All",
+            "skill1": "Radiant Burst",
+            "skill2": "Knowledge of the Old Gods",
+            "skill3": "Godly Prowess",
+            "flavorText": "Mastery of the arcane is not an easy achievement"
+        }
+    ]
+}

@@ -41,7 +41,6 @@ public class CameraFollower : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        Debug.Log(horizontalInput);
     }
 
     //normalize velocity

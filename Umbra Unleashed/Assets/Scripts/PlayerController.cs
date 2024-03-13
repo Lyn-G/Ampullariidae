@@ -1,17 +1,30 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5.0f; // Adjust the speed of the player movement
-    private Rigidbody rb; // Reference to the Rigidbody component
+    public Rigidbody rb; // Reference to the Rigidbody component
     private Vector3 defaultScale; // To store the original scale of the player
+    public WeaponHandling.WeaponData currentWeapon; //stores the current weapon that the player is holding's data, to account for what animation/attack is used.
+    public GameObject weapon; //the actual weapon game object with the sprite renderer on it
+
 
     void Start()
     {
         // Get the Rigidbody component from the player game object
-        rb = GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            rb = GetComponent<Rigidbody>();
+        }
         // Store the original local scale of the player
         defaultScale = transform.localScale;
+
+        //Get weapon information; if there is no weapon equipped, currentWeapon will default to "Bare Hands"
+        //delayed to make sure things load in the proper order
+        Invoke("LoadWeaponData", 0.005f);
+
+        StartCoroutine(InputCheck());
     }
 
     void Update()
@@ -28,6 +41,34 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(transform.position + movement * speed * Time.deltaTime);
             FlipSprite(moveHorizontal);
         }
+    }
+
+    //runs every 0.01s, checks to see if attack keys were entered
+    IEnumerator InputCheck()
+    {
+        while (true)
+        {
+            
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                Debug.Log("Using attack: " + currentWeapon.skill1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Debug.Log("Using attack: " + currentWeapon.skill2);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Debug.Log("Using attack: " + currentWeapon.skill3);
+            }
+            yield return new WaitForSeconds(0.01f);
+        }
+        
+    }
+
+    private void LoadWeaponData()
+    {
+        currentWeapon = weapon.GetComponent<WeaponInfo>().GetWeaponData();
     }
 
     bool IsPathClear(Vector3 direction)
