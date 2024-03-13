@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
     public TMP_Text healthText;
+    public Slider slider;
     public TMP_Text manaText;
     public TMP_Text attackText;
     public TMP_Text defenseText;

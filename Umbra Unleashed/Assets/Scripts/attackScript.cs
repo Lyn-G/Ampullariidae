@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class attackScript : MonoBehaviour
 {
+
+    public HealthBar healthBar;
+    public int currentHealth;
+    public int maxHealth = 20;
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth;
+        if (healthBar) healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -22,8 +27,15 @@ public class attackScript : MonoBehaviour
         // this function!
         if (other.CompareTag("Player"))
         {
-            // set player state to hurt!
+            Debug.Log("taking damage");
+            SetDamage(2);
 
         }
+    }
+
+    public void SetDamage(int amount) {
+        currentHealth -= amount;
+        if (healthBar) healthBar.SetHealth(currentHealth);
+       
     }
 }
