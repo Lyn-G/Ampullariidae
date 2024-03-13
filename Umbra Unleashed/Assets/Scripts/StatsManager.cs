@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
     public TMP_Text healthText;
+    public Slider slider;
     public TMP_Text manaText;
     public TMP_Text attackText;
     public TMP_Text defenseText;
@@ -32,7 +33,7 @@ public class PlayerStats : MonoBehaviour
     public Image weaponIcon;
     public Image skillIcon1;
     public Image skillIcon2;
-    public Sprite emptySlotSprite; 
+    public Sprite emptySlotSprite;
 
     // Weapon Icons
     //Staffs
@@ -46,7 +47,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private Sprite powerGloveSprite;
 
     //Skill Icons
-    
+
     //Staffs
     //tuningRod
     [SerializeField] private Sprite posionCloudSprite;
@@ -72,15 +73,15 @@ public class PlayerStats : MonoBehaviour
     //brassKnuckles
     [SerializeField] private Sprite hammerFistSprite;
     [SerializeField] private Sprite UppercutSprite;
-    
+
     //powerGlove
     [SerializeField] private Sprite chargePunchSprite;
     [SerializeField] private Sprite launchSprite;
 
     private void Start()
     {
-        healthText.text = "Health: " + health.ToString()+ "/" + maxHealth.ToString();
-        manaText.text = "Mana: " + mana.ToString()+ "/" + maxMana.ToString();
+        healthText.text = "Health: " + health.ToString() + "/" + maxHealth.ToString();
+        manaText.text = "Mana: " + mana.ToString() + "/" + maxMana.ToString();
         attackText.text = "Attack: " + attack.ToString();
         defenseText.text = "Defense: " + defense.ToString();
         strengthText.text = "Strength: " + strength.ToString();
@@ -95,7 +96,7 @@ public class PlayerStats : MonoBehaviour
         weaponIcon.sprite = emptySlotSprite;
         skillIcon1.sprite = emptySlotSprite;
         skillIcon2.sprite = emptySlotSprite;
-    }   
+    }
 
     public void ChangeHealth(int amount)
     {
@@ -164,7 +165,7 @@ public class PlayerStats : MonoBehaviour
     public void SelectingWeapon(string weaponName)
     {
         var weaponData = WeaponHandling.GetWeaponDataByName(weaponName);
-        if(weaponData == null)
+        if (weaponData == null)
         {
             Debug.Log("SelectingWeapon: Weapon Data is null");
             return;
@@ -176,48 +177,48 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Selected Weapon: " + weaponData.name);
         Debug.Log("Skills: " + weaponData.skill1 + " and " + weaponData.skill2);
         //Updating Weapon Icon
-        switch(weaponData.name)
-    {   
-        //Staffs
-        case "Spriggan Scepter":
-            weaponIcon.sprite = sprigganScepterSprite;
-            skillIcon1.sprite = vineChokeSprite;
-            skillIcon2.sprite = magicArcSprite;
-            break;
-        case "Tuning Rod":
-            weaponIcon.sprite = tuningRodSprite;
-            skillIcon1.sprite = posionCloudSprite;
-            skillIcon2.sprite = rockThrowSprite;
-            break;
-        case "Occult Staff":
-            weaponIcon.sprite = occultStaffSprite;
-            skillIcon1.sprite = summonSkeletonSprite;
-            skillIcon2.sprite = corruptionSprite;
-            break;
-        case "Monk's Staff":
-            weaponIcon.sprite = monksStaffSprite;
-            skillIcon1.sprite = kiExtractionSprite;
-            skillIcon2.sprite = squallOfFistsSprite;
-            break;    
-        //Fists
-        case "Fists of Fury":
-            weaponIcon.sprite = fistsOfFurySprite;
-            skillIcon1.sprite = hiddenBladeSprite;
-            skillIcon2.sprite = flyingKickSprite;
-            break;
-        case "Brass Knuckles":
-            weaponIcon.sprite = brassKnucklesSprite;
-            skillIcon1.sprite = hammerFistSprite;
-            skillIcon2.sprite = UppercutSprite;
-            break;
-        case "Power Glove":
-            weaponIcon.sprite = powerGloveSprite;
-            skillIcon1.sprite = chargePunchSprite;
-            skillIcon2.sprite = launchSprite;
-            break;
-        // ... and so on for each weapon ...
-    }
-        
+        switch (weaponData.name)
+        {
+            //Staffs
+            case "Spriggan Scepter":
+                weaponIcon.sprite = sprigganScepterSprite;
+                skillIcon1.sprite = vineChokeSprite;
+                skillIcon2.sprite = magicArcSprite;
+                break;
+            case "Tuning Rod":
+                weaponIcon.sprite = tuningRodSprite;
+                skillIcon1.sprite = posionCloudSprite;
+                skillIcon2.sprite = rockThrowSprite;
+                break;
+            case "Occult Staff":
+                weaponIcon.sprite = occultStaffSprite;
+                skillIcon1.sprite = summonSkeletonSprite;
+                skillIcon2.sprite = corruptionSprite;
+                break;
+            case "Monk's Staff":
+                weaponIcon.sprite = monksStaffSprite;
+                skillIcon1.sprite = kiExtractionSprite;
+                skillIcon2.sprite = squallOfFistsSprite;
+                break;
+            //Fists
+            case "Fists of Fury":
+                weaponIcon.sprite = fistsOfFurySprite;
+                skillIcon1.sprite = hiddenBladeSprite;
+                skillIcon2.sprite = flyingKickSprite;
+                break;
+            case "Brass Knuckles":
+                weaponIcon.sprite = brassKnucklesSprite;
+                skillIcon1.sprite = hammerFistSprite;
+                skillIcon2.sprite = UppercutSprite;
+                break;
+            case "Power Glove":
+                weaponIcon.sprite = powerGloveSprite;
+                skillIcon1.sprite = chargePunchSprite;
+                skillIcon2.sprite = launchSprite;
+                break;
+                // ... and so on for each weapon ...
+        }
+
     }
 
     public void DeselectingWeapon()
@@ -256,5 +257,10 @@ public class PlayerStats : MonoBehaviour
             default:
                 return 0;
         }
+    }
+
+    public void SetMaxHealth()
+    {
+        health = maxHealth;
     }
 }

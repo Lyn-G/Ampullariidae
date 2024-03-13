@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Terrain
   - StatsManager
+  - RestrictiveZone
   - Enemy
   layers:
   - Default
