@@ -102,4 +102,9 @@ public class PlayerStats : MonoBehaviour
         charismaText.text = "Charisma: " + charisma.ToString();
         // Update UI
     }
+
+    public void SetMaxHealth()
+    {
+        health = maxHealth;
+    }
 }

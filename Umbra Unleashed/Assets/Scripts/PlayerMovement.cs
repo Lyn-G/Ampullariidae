@@ -14,6 +14,8 @@ public class CameraFollower : MonoBehaviour
     public Rigidbody playerBody;
     public SpriteRenderer playerSprite;
     private bool flipped = false;
+
+    private bool moveRestrict = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,11 @@ public class CameraFollower : MonoBehaviour
     //move the player
     private void MovePlayer()
     {
+        if(horizontalInput != 0 && moveRestrict)
+        {
+            verticalInput = 0f;
+        }
+
         if(horizontalInput > 0 && flipped || horizontalInput < 0 && !flipped)
         {
             FlipSprite();
@@ -82,5 +89,19 @@ public class CameraFollower : MonoBehaviour
         flipped = !flipped;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("RestrictiveZone"))
+        {
+            moveRestrict = true; // Enable movement restriction
+        }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("RestrictiveZone"))
+        {
+            moveRestrict = false; // Disable movement restriction
+        }
+    }
 }
