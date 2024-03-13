@@ -8,74 +8,147 @@ public class EnemyPathfinding : MonoBehaviour
     public Transform player;
     public float CheckFrequency; // Frequency it check if player is near by in seconds
     public float PathfindRadius; // Distance is checks for player
+    public Animator animator;
 
     private NavMeshAgent agent;
     float timePassed; // Measures time passing to see if it should check for enemies
-    bool idle = false; // Is the player currently idle
     Rigidbody rb;
-    
+    public int state;
+    int WALK = 0;
+    int IDLE = 1;
+    int HIT = 2;
+    int HURT = 3;
+    GameObject attackHitbox;
+    public float knockbackForce;
+    public int health;
+    public GameObject coinManager;
+
+
     // Start is called before the first frame update
     void Start()
     {
         // https://www.youtube.com/watch?v=u2EQtrdgfNs&ab_channel=CreativeMediaTutorials
+        player = GameObject.FindGameObjectsWithTag("Player")[0].transform; // This should always find the player
+        animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = 0;
         timePassed = 0;
         rb = GetComponent<Rigidbody>();
-        
+        state = IDLE;
+        attackHitbox = transform.Find("attackHitbox").gameObject;
+        transform.forward = new Vector3(0, 0, 0);
+        coinManager = GameObject.Find("CoinManager");
     }
-
     // Update is called once per frame
     void Update()
     {
-        timePassed += Time.deltaTime;
-        // Check every 3 seconds
-        if ( timePassed > CheckFrequency) {
-            timePassed = 0;
-
+        if (health == 0)
+        {
+            die();
+        }
+        // states
+        /*if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //GameObject.Find("EnemyManager").GetComponent<enemyManagerScript>().despawn(this.gameObject);
+            state = HURT;
+            StartCoroutine(hurt(player.transform));*/
+       // }
+        
+        if (state != HIT && state != HURT)
+        {
+            //pathfinding
+            float playerX = Mathf.Abs(player.position.x - this.transform.position.x);
+            float playerZ = Mathf.Abs(player.position.z - this.transform.position.z);
             // only pathfind to the player if the player is within check distance
-            if ((Mathf.Abs(player.position.x - this.transform.position.x) < PathfindRadius) && (Mathf.Abs(player.position.y - this.transform.position.y) < PathfindRadius))
+
+            timePassed += Time.deltaTime;
+            // Check every 3 seconds for the player while it is idle 
+            if (state == IDLE && timePassed > CheckFrequency)
             {
-                Debug.Log(player.position.x - this.transform.position.x);
-                idle = false;
-                agent.speed = 3.5f;
-            }
-            else
-            {
-                agent.speed = 0;
-                // if the enemy isnt pathfinding they can just do an idle routine
-                // dont start the idle routine if its already idle
-                if (!idle )
+
+                timePassed = 0;
+
+                if (playerX < PathfindRadius && playerZ < PathfindRadius)
                 {
 
-                    idle = true;
-                    StartCoroutine(Idle());
+                    state = WALK;
+                    Debug.Log(player.position.x - this.transform.position.x);
+                    agent.speed = 3.5f;
                 }
-                
-            }
-        }
-        agent.destination = player.position;
-        
+                else
+                {
+                    state = IDLE;
+                    agent.speed = 0;
+                }
 
-        if ( Input.GetKeyDown(KeyCode.Space) ) {
-            GameObject.Find("EnemyManager").GetComponent<enemyManagerScript>().despawn(this.gameObject);
+            }
+            else if (state == WALK && playerX < 2 && playerZ < 2)
+            {
+
+                state = HIT;
+                //agent.speed = 0;
+
+                StartCoroutine(attack());
+                // if the enemy isnt pathfinding they can just do an idle routine
+                // dont start the idle routine if its already idle
+
+            } 
+            agent.destination = player.position;
+
+
+            
         }
+        animator.SetInteger("state", state);
+
     }
 
-
-    IEnumerator Idle()
+    void die()
     {
-        /*
-        yield return new WaitForSeconds(Random.Range(1, 5)); // It will wait before starting the idle activity
+        gameObject.SetActive(false);
+    }
 
-        while (idle == true && rb != null)
-        {
-            rb.AddTorque(Vector3.right * Random.Range(-20, 20)); // Turn a random ammount
-            yield return new WaitForSeconds(1f); // wait for it to finish rotating
-            rb.AddForce(Vector3.forward * Random.Range(-20, 20)); // Turn a random ammount
-            yield return new WaitForSeconds(Random.Range(1, 5)); // It will walk in a random direction for 1-5 seconds
-        }
-        */
+    IEnumerator attack()
+    {
+        // i found out how to wait for the animation using chatgpt
+        // Wait for the length of the animation
+        animator.Play("wind");
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(stateInfo.length);
+
+        animator.Play("attack");
+        attackHitbox.SetActive(true);
+        stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(stateInfo.length);
+        attackHitbox.SetActive(false);
+
+        animator.Play("end");
+        stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(stateInfo.length);
+        state = IDLE;
         yield return null;
     }
+    IEnumerator hurt( Transform hurter)
+    {
+        // i found out how to wait for the animation using chatgpt
+        // Wait for the length of the animation
+
+        // i used chatgpt to find direction vector for hurt force
+        
+        Vector3 direction = (transform.position - hurter.position).normalized;
+        // Apply the force in the calculated direction
+        rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
+        animator.Play("takeDammage");
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(stateInfo.length);
+        state = IDLE;
+
+        yield return null;
+    }
+
+    public void outsideHurt(Transform hurter, int damage) // call this function from outside of the player and pass the hurter as the arguement in order to make it do its hurt routine
+    {
+        health -= damage;
+        hurt(hurter);
+    }
+
 }
