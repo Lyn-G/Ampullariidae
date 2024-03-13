@@ -39,4 +39,11 @@ public class WeaponInfo : MonoBehaviour
         return weaponData;
     }
 
+    //takes any sprite name, returns its weapon data
+    public static WeaponHandling.WeaponData ChooseWeapon(string weaponSpriteName)
+    {
+        WeaponHandling.WeaponData newWeaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == weaponSpriteName);
+        return newWeaponData;
+    }
+
 }

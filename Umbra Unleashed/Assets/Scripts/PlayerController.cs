@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     //for animations
     private bool sideFacing = false;
     private bool flipped;
-    private int attacking; //0 is no attack; 1 is punch; 2 is hand thrust
+    private int attacking; //0 is no attack; 1 is punch; 2 is basic hand thrust, 3 is uppercut
     //it is way too much of a hassle to have a bunch of individual bools for EVERY ATTACK.
 
     void Start()
@@ -68,8 +68,8 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-        // Check if the path is clear before moving
-        if (IsPathClear(movement))
+        // Check if the path is clear && there is not a current animation before moving
+        if (IsPathClear(movement) && attacking == 0)
         {
             rb.MovePosition(transform.position + movement * speed * Time.deltaTime);
             FlipSprite(moveHorizontal);
@@ -89,11 +89,13 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                Debug.Log("Using attack: " + currentWeapon.skill2);
+                attacking = 2;
+                Invoke("AttackEnd", 0.67f);
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                Debug.Log("Using attack: " + currentWeapon.skill3);
+                attacking = 3;
+                Invoke("AttackEnd", 0.83f);
             }
             yield return new WaitForSeconds(0.001f);
         }
