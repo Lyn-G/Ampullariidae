@@ -145,4 +145,10 @@ public class EnemyPathfinding : MonoBehaviour
         yield return null;
     }
 
+    public void outsideHurt(Transform hurter, int damage) // call this function from outside of the player and pass the hurter as the arguement in order to make it do its hurt routine
+    {
+        health -= damage;
+        hurt(hurter);
+    }
+
 }
