@@ -93,7 +93,33 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private Sprite chargePunchSprite;
     [SerializeField] private Sprite launchSprite;
 
-    //
+    //Blades
+    //cutlass
+    [SerializeField] private Sprite swabTheDeckSprite;
+    [SerializeField] private Sprite boardingPartySprite;
+    //busterSword
+    [SerializeField] private Sprite HeaveSprite;
+    [SerializeField] private Sprite MomemtumSprite;
+    //woodenSword
+    [SerializeField] private Sprite thrustSprite;
+    [SerializeField] private Sprite SpinSprite;
+    //sacrificialDagger
+    [SerializeField] private Sprite fromTheBeyondSprite;
+    [SerializeField] private Sprite oldGodsMurmursSprite;
+
+    //Tomes
+    //decayedDictionary
+    [SerializeField] private Sprite fireballSprite;
+    [SerializeField] private Sprite lightningSprite;
+    //diviningGuide
+    [SerializeField] private Sprite ghostGrappleSprite;
+    [SerializeField] private Sprite curseSprite;
+    //librariansLedger
+    [SerializeField] private Sprite SHHHHHHSprite;
+    [SerializeField] private Sprite overdueFeesSprite;
+    //planisphere
+    [SerializeField] private Sprite starfallSprite;
+    [SerializeField] private Sprite meteoricMightSprite;
 
     private void Start()
     {
@@ -244,45 +270,46 @@ public class PlayerStats : MonoBehaviour
             //Blades
             case "Cutlass":
                 weaponIcon.sprite = cutlassSprite;
-                skillIcon1.sprite = null;
-                skillIcon2.sprite = null;
+                skillIcon1.sprite = swabTheDeckSprite;
+                skillIcon2.sprite = boardingPartySprite;
                 break;
             case "Buster Sword":
                 weaponIcon.sprite = busterSwordSprite;
-                skillIcon1.sprite = null;
-                skillIcon2.sprite = null;
+                skillIcon1.sprite = HeaveSprite;
+                skillIcon2.sprite = MomemtumSprite;
                 break;
             case "Wooden Sword":
                 weaponIcon.sprite = woodenSwordSprite;
-                skillIcon1.sprite = null;
-                skillIcon2.sprite = null;
+                skillIcon1.sprite = thrustSprite;
+                skillIcon2.sprite = SpinSprite;
                 break;
             case "Sacrificial Dagger":
                 weaponIcon.sprite = sacrificialDaggerSprite;
-                skillIcon1.sprite = null;
-                skillIcon2.sprite = null;
+                skillIcon1.sprite = fromTheBeyondSprite;
+                skillIcon2.sprite = oldGodsMurmursSprite;
                 break;
             //Tomes
             case "Decayed Dictionary":
                 weaponIcon.sprite = decayedDictionarySprite;
-                skillIcon1.sprite = null;
-                skillIcon2.sprite = null;
+                skillIcon1.sprite = fireballSprite;
+                skillIcon2.sprite = lightningSprite;
                 break;
-            case "Divining Guide":
+            case "Divining Guide": 
                 weaponIcon.sprite = diviningGuideSprite;
-                skillIcon1.sprite = null;
-                skillIcon2.sprite = null;
+                skillIcon1.sprite = ghostGrappleSprite;
+                skillIcon2.sprite = curseSprite;
                 break;
             case "Librarian's Ledger":
                 weaponIcon.sprite = librariansLedgerSprite;
-                skillIcon1.sprite = null;
-                skillIcon2.sprite = null;
+                skillIcon1.sprite = SHHHHHHSprite;
+                skillIcon2.sprite = overdueFeesSprite;
                 break;
             case "Planisphere":
                 weaponIcon.sprite = planisphereSprite;
-                skillIcon1.sprite = null;
-                skillIcon2.sprite = null;
+                skillIcon1.sprite = starfallSprite;
+                skillIcon2.sprite = meteoricMightSprite;
                 break;
+            
         }
 
     }

@@ -4910,6 +4910,22 @@ MonoBehaviour:
   UppercutSprite: {fileID: 21300000, guid: 4ced1673e3d0cdc478227524a11548ca, type: 3}
   chargePunchSprite: {fileID: 21300000, guid: d135c3e8e1e77a441966f33b5e1e6a4f, type: 3}
   launchSprite: {fileID: 21300000, guid: 5a961f90120fbb9428059218388fd144, type: 3}
+  swabTheDeckSprite: {fileID: 21300000, guid: ba231cb6a9861eb49be190ce1b92892e, type: 3}
+  boardingPartySprite: {fileID: 21300000, guid: 989c126d217cf1b4aa99aa327cb73b6b, type: 3}
+  HeaveSprite: {fileID: 21300000, guid: f31d3b11a79f83a45a9c64b3824ef998, type: 3}
+  MomemtumSprite: {fileID: 21300000, guid: a2ad4d0a6f1f62544aa1d6bcceefc553, type: 3}
+  thrustSprite: {fileID: 21300000, guid: 67dea8423758b434ea633dbf351abac0, type: 3}
+  SpinSprite: {fileID: 21300000, guid: e2a46d426a82ded4f97b0fc0ecf541e8, type: 3}
+  fromTheBeyondSprite: {fileID: 21300000, guid: fd811161c6174364eb87befb3bd0da8d, type: 3}
+  oldGodsMurmursSprite: {fileID: 21300000, guid: cd18aa8a49a007b4796081a02da5b954, type: 3}
+  fireballSprite: {fileID: 21300000, guid: 50024956692d69a4f8447c6a185bcf08, type: 3}
+  lightningSprite: {fileID: 21300000, guid: 5866462437990854b805d6cb238a4f8a, type: 3}
+  ghostGrappleSprite: {fileID: 21300000, guid: c37bfb97b28b5f243a9dd77150576085, type: 3}
+  curseSprite: {fileID: 21300000, guid: de7ed8ba614f157408ee360c2359be35, type: 3}
+  SHHHHHHSprite: {fileID: 21300000, guid: c5f4b4924977d904facef24a8b454ece, type: 3}
+  overdueFeesSprite: {fileID: 21300000, guid: 8a89270a948768b498a889ccbd184faf, type: 3}
+  starfallSprite: {fileID: 21300000, guid: 26f63332ec5b1a447978eadd545557c7, type: 3}
+  meteoricMightSprite: {fileID: 21300000, guid: 0271dbbde94ba524fa008bdd795680d1, type: 3}
 --- !u!4 &266922291
 Transform:
   m_ObjectHideFlags: 0
