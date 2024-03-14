@@ -16,8 +16,10 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer playerSprite; //player sprite
 
     //weapon info
-    public WeaponHandling.WeaponData currentWeapon; //stores the current weapon that the player is holding's data, to account for what animation/attack is used.
-    public GameObject weapon; //the actual weapon game object with the sprite renderer on it
+    public WeaponHandling.WeaponData currentRangeWeapon; //stores the current range weapon that the player is holding's data, to account for what animation/attack is used.
+    public WeaponHandling.WeaponData currentMeleeWeapon; //stores the current melee weapon that the player is holding's data, to account for what animation/attack is used.
+    public GameObject rangeWeapon; //the actual range weapon game object with the sprite renderer on it
+    public GameObject meleeWeapon; //the actual melee weapon game object with the sprite renderer on it
 
     //for animations
     private bool sideFacing = false;
@@ -106,11 +108,18 @@ public class PlayerController : MonoBehaviour
         attacking = 0;
     }
 
-    public void LoadWeaponData()
+    public void LoadRangeWeaponData()
     {
-        currentWeapon = weapon.GetComponent<WeaponInfo>().GetWeaponData();
-        if(currentWeapon != null)
-        Debug.Log("PlayerController: Loaded " + currentWeapon.spriteName + " flavor text: " + currentWeapon.flavorText);
+        currentRangeWeapon = rangeWeapon.GetComponent<WeaponInfo>().GetWeaponData();
+        if(currentRangeWeapon != null)
+        Debug.Log("PlayerController: Range Weapon Loaded " + currentRangeWeapon.spriteName + " flavor text: " + currentRangeWeapon.flavorText);
+    }
+
+    public void LoadMeleeWeaponData()
+    {
+        currentMeleeWeapon = meleeWeapon.GetComponent<WeaponInfo>().GetWeaponData();
+        if(currentMeleeWeapon != null)
+        Debug.Log("PlayerController: Melee Weapon Loaded " + currentMeleeWeapon.spriteName + " flavor text: " + currentMeleeWeapon.flavorText);
     }
 
     bool IsPathClear(Vector3 direction)

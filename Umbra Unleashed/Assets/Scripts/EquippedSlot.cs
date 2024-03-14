@@ -31,7 +31,8 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
 
     // Variables to update Player's current weapon
     public GameObject Player;
-    public GameObject PlayerWeapon;
+    public GameObject PlayerRangeWeapon;
+    public GameObject PlayerMeleeWeapon;
 
     private void Start()
     {
@@ -117,15 +118,15 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         //Update Player's current weapon if its a Staff or Tome by changing its sprite
         if (weaponType == "Staff" || weaponType == "Tome")
         {
-            PlayerWeapon.GetComponent<SpriteRenderer>().sprite = itemSprite;
-            PlayerWeapon.GetComponent<WeaponInfo>().LoadRangeWeaponData();
-            Player.GetComponent<PlayerController>().LoadWeaponData();
+            PlayerRangeWeapon.GetComponent<SpriteRenderer>().sprite = itemSprite;
+            PlayerRangeWeapon.GetComponent<WeaponInfo>().LoadRangeWeaponData();
+            Player.GetComponent<PlayerController>().LoadRangeWeaponData();
         }
         if (weaponType == "Blade" || weaponType == "Fists")
         {
-            PlayerWeapon.GetComponent<SpriteRenderer>().sprite = itemSprite;
-            PlayerWeapon.GetComponent<WeaponInfo>().LoadMeleeWeaponData();
-            Player.GetComponent<PlayerController>().LoadWeaponData();
+            PlayerMeleeWeapon.GetComponent<SpriteRenderer>().sprite = itemSprite;
+            PlayerMeleeWeapon.GetComponent<WeaponInfo>().LoadMeleeWeaponData();
+            Player.GetComponent<PlayerController>().LoadMeleeWeaponData();
         }
 
     }
@@ -156,17 +157,21 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().ChangeAttack(-statChangeAmount);
 
         //Update Player's current weapon to be empty
-        PlayerWeapon.GetComponent<SpriteRenderer>().sprite = null;
+        
         if (weaponType == "Staff" || weaponType == "Tome")
         {
-            PlayerWeapon.GetComponent<WeaponInfo>().LoadRangeWeaponData();
+            PlayerRangeWeapon.GetComponent<SpriteRenderer>().sprite = null;
+            PlayerRangeWeapon.GetComponent<WeaponInfo>().LoadRangeWeaponData();
+            Player.GetComponent<PlayerController>().LoadRangeWeaponData();
         }
-        else
+        if (weaponType == "Blade" || weaponType == "Fists")
         {
-            PlayerWeapon.GetComponent<WeaponInfo>().LoadMeleeWeaponData();
+            PlayerMeleeWeapon.GetComponent<SpriteRenderer>().sprite = null;
+            PlayerMeleeWeapon.GetComponent<WeaponInfo>().LoadMeleeWeaponData();
+            Player.GetComponent<PlayerController>().LoadMeleeWeaponData();
         }
 
-        Player.GetComponent<PlayerController>().LoadWeaponData();
+        
 
         //Updating Player equipped weapon image in UI
         playerDisplayImage.sprite = emptySlotSprite;
