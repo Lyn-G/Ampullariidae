@@ -42,10 +42,7 @@ public class bossScript : MonoBehaviour
     void Update()
     {
         
-        if (health == 0)
-        {
-            die();
-        }
+        
         // states
         /*if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -148,6 +145,10 @@ public class bossScript : MonoBehaviour
     public void outsideHurt(Transform hurter, int damage) // call this function from outside of the player and pass the hurter as the arguement in order to make it do its hurt routine
     {
         health -= damage;
+        if (health == 0)
+        {
+            die();
+        }
         hurt(hurter);
     }
 

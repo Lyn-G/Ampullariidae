@@ -573,6 +573,7 @@ GameObject:
   - component: {fileID: 6164574202713407027}
   - component: {fileID: 6804341918567855563}
   - component: {fileID: 209186913446493696}
+  - component: {fileID: 1418096758692146192}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -679,7 +680,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &209186913446493696
 BoxCollider:
@@ -702,6 +703,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.34, y: 0.53, z: 0.34}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1418096758692146192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6516307906518208103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6401b5afa4104f498bbb3f9c7987f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 5950513463463406922, guid: 05bdb87c9e3becd44b2925c8f7cae0f8, type: 3}
+  speed: 10
+  cooldown: {fileID: 0}
 --- !u!1001 &3401789746101983832
 PrefabInstance:
   m_ObjectHideFlags: 0

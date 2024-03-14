@@ -22,11 +22,13 @@ public class EnemyPathfinding : MonoBehaviour
     public float knockbackForce;
     public int health;
     public GameObject coinManager;
+    public EnemyCountTracker enemyCountManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        enemyCountManager = GameObject.Find("enemyCountManager").GetComponent<EnemyCountTracker>();
         // https://www.youtube.com/watch?v=u2EQtrdgfNs&ab_channel=CreativeMediaTutorials
         player = GameObject.FindGameObjectsWithTag("Player")[0].transform; // This should always find the player
         animator = GetComponent<Animator>();
@@ -42,10 +44,7 @@ public class EnemyPathfinding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health == 0)
-        {
-            die();
-        }
+       
         // states
         /*if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -72,7 +71,7 @@ public class EnemyPathfinding : MonoBehaviour
                 {
 
                     state = WALK;
-                    Debug.Log(player.position.x - this.transform.position.x);
+                    //Debug.Log(player.position.x - this.transform.position.x);
                     agent.speed = 3.5f;
                 }
                 else
@@ -104,6 +103,7 @@ public class EnemyPathfinding : MonoBehaviour
 
     void die()
     {
+        enemyCountManager.decrement();
         gameObject.SetActive(false);
     }
 
@@ -127,14 +127,14 @@ public class EnemyPathfinding : MonoBehaviour
         state = IDLE;
         yield return null;
     }
-    IEnumerator hurt( Transform hurter)
+    IEnumerator hurt( Vector3 hurter)
     {
         // i found out how to wait for the animation using chatgpt
         // Wait for the length of the animation
 
         // i used chatgpt to find direction vector for hurt force
         
-        Vector3 direction = (transform.position - hurter.position).normalized;
+        Vector3 direction = (transform.position - hurter).normalized;
         // Apply the force in the calculated direction
         rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
         animator.Play("takeDammage");
@@ -145,10 +145,16 @@ public class EnemyPathfinding : MonoBehaviour
         yield return null;
     }
 
-    public void outsideHurt(Transform hurter, int damage) // call this function from outside of the player and pass the hurter as the arguement in order to make it do its hurt routine
+    public void outsideHurt(Vector3 hurter, int damage) // call this function from outside of the player and pass the hurter as the arguement in order to make it do its hurt routine
     {
+
+        Debug.Log(health);
+        if (health < 0)
+        {
+            die();
+        }
         health -= damage;
-        hurt(hurter);
+        StartCoroutine(hurt(hurter));
     }
 
 }
