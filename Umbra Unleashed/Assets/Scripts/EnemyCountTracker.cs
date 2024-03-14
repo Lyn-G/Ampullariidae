@@ -23,6 +23,6 @@ public class EnemyCountTracker : MonoBehaviour
             SceneManager.LoadScene(sceneIndex);
             }*/
 
-}
-}
+        }
+    }
 }

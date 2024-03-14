@@ -173,6 +173,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void takeDammage(Vector3 hurter)
+    {
+        Vector3 direction = (transform.position - hurter).normalized;
+        // Apply the force in the calculated direction
+        rb.AddForce(direction * 8, ForceMode.Impulse);
+    }
+
     private void AttackEnd()
     {
         attacking = 0;

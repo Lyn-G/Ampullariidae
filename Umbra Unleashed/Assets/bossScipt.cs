@@ -124,14 +124,14 @@ public class bossScript : MonoBehaviour
         state = IDLE;
         yield return null;
     }
-    IEnumerator hurt(Transform hurter)
+    IEnumerator hurt(Vector3 hurter)
     {
         // i found out how to wait for the animation using chatgpt
         // Wait for the length of the animation
 
         // i used chatgpt to find direction vector for hurt force
 
-        Vector3 direction = (transform.position - hurter.position).normalized;
+        Vector3 direction = (transform.position - hurter).normalized;
         // Apply the force in the calculated direction
         rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
         animator.Play("bossHurt");
@@ -142,14 +142,17 @@ public class bossScript : MonoBehaviour
         yield return null;
     }
 
-    public void outsideHurt(Transform hurter, int damage) // call this function from outside of the player and pass the hurter as the arguement in order to make it do its hurt routine
+    public void outsideHurt(Vector3 hurter, int damage) // call this function from outside of the player and pass the hurter as the arguement in order to make it do its hurt routine
     {
         health -= damage;
-        if (health == 0)
+        if (health < 0)
         {
             die();
         }
-        hurt(hurter);
+        else
+        {
+            StartCoroutine(hurt(hurter));
+        }
     }
 
 }

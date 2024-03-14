@@ -23,6 +23,7 @@ public class EnemyPathfinding : MonoBehaviour
     public int health;
     public GameObject coinManager;
     public EnemyCountTracker enemyCountManager;
+    public List<GameObject> gemList;
 
 
     // Start is called before the first frame update
@@ -44,15 +45,6 @@ public class EnemyPathfinding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        // states
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //GameObject.Find("EnemyManager").GetComponent<enemyManagerScript>().despawn(this.gameObject);
-            state = HURT;
-            StartCoroutine(hurt(player.transform));*/
-       // }
-        
         if (state != HIT && state != HURT)
         {
             //pathfinding
@@ -71,7 +63,7 @@ public class EnemyPathfinding : MonoBehaviour
                 {
 
                     state = WALK;
-                    //Debug.Log(player.position.x - this.transform.position.x);
+                    Debug.Log(player.position.x - this.transform.position.x);
                     agent.speed = 3.5f;
                 }
                 else
@@ -104,6 +96,8 @@ public class EnemyPathfinding : MonoBehaviour
     void die()
     {
         enemyCountManager.decrement();
+        Instantiate(gemList[Random.Range(0, 4)], transform.position, Quaternion.identity); 
+
         gameObject.SetActive(false);
     }
 
@@ -149,12 +143,16 @@ public class EnemyPathfinding : MonoBehaviour
     {
 
         Debug.Log(health);
+
+        health -= damage;
         if (health < 0)
         {
             die();
         }
-        health -= damage;
-        StartCoroutine(hurt(hurter));
+        else
+        {
+            StartCoroutine(hurt(hurter));
+        }
     }
 
 }

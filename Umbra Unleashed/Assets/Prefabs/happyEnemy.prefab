@@ -302,6 +302,11 @@ MonoBehaviour:
   health: 17
   coinManager: {fileID: 0}
   enemyCountManager: {fileID: 0}
+  gemList:
+  - {fileID: 3388963155657299998, guid: 08f2638908d597440bde9b0e0d40f7e9, type: 3}
+  - {fileID: 7747176047225881422, guid: 8e3099dea8b18da40910008f58c2fab2, type: 3}
+  - {fileID: 4833362202023024, guid: b102998082fc4ba4ab5fcc8c142de469, type: 3}
+  - {fileID: 1422949102742088853, guid: 15acf3f0482448141beecddbc1c6f671, type: 3}
 --- !u!54 &5745725269736813174
 Rigidbody:
   m_ObjectHideFlags: 0
