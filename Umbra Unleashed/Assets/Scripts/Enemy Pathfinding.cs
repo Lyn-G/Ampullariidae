@@ -24,6 +24,7 @@ public class EnemyPathfinding : MonoBehaviour
     public GameObject coinManager;
     public EnemyCountTracker enemyCountManager;
     public List<GameObject> gemList;
+    public GameObject hurtparticle;
 
 
     // Start is called before the first frame update
@@ -126,8 +127,9 @@ public class EnemyPathfinding : MonoBehaviour
         // i found out how to wait for the animation using chatgpt
         // Wait for the length of the animation
 
-        // i used chatgpt to find direction vector for hurt force
-        
+        // i used chatgpt to find direction vector for hurt force and for particles
+        GameObject effect = Instantiate(hurtparticle, transform.position, Quaternion.identity, transform);
+        Destroy(effect, 2f);
         Vector3 direction = (transform.position - hurter).normalized;
         // Apply the force in the calculated direction
         rb.AddForce(direction * knockbackForce, ForceMode.Impulse);

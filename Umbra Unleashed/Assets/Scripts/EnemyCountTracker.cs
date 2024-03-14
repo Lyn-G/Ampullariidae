@@ -12,7 +12,7 @@ public class EnemyCountTracker : MonoBehaviour
     public void decrement()
     {
         EnemyCount--;
-        if (EnemyCount < 0)
+        if (EnemyCount <= 0)
         {
             // change it using scene name
             SceneManager.LoadScene(sceneName);
