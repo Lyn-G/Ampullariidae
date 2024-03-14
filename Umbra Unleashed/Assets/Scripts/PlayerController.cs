@@ -109,6 +109,8 @@ public class PlayerController : MonoBehaviour
     public void LoadWeaponData()
     {
         currentWeapon = weapon.GetComponent<WeaponInfo>().GetWeaponData();
+        if(currentWeapon != null)
+        Debug.Log("PlayerController: Loaded " + currentWeapon.spriteName + " flavor text: " + currentWeapon.flavorText);
     }
 
     bool IsPathClear(Vector3 direction)
