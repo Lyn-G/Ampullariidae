@@ -28,27 +28,33 @@ public class ItemSO : ScriptableObject
         }
         else if (statToChange == StatToChange.Attack)
         {
-            GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().ChangeAttack(statChangeAmount);
+            stats.ChangeAttack(statChangeAmount);
+            isUsable = true;
         }
         else if (statToChange == StatToChange.Defense)
         {
-            GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().ChangeDefense(statChangeAmount);
+            stats.ChangeDefense(statChangeAmount);
+            isUsable = true;
         }
         else if (attributeToChange == AttributeToChange.Strength)
         {
-            GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().ChangeStrength(attributeChangeAmount);
+            stats.ChangeStrength(attributeChangeAmount);
+            isUsable = true;
         }
         else if (attributeToChange == AttributeToChange.Dexterity)
         {
-            GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().ChangeDexterity(attributeChangeAmount);
+            stats.ChangeDexterity(attributeChangeAmount);
+            isUsable = true;
         }
         else if (attributeToChange == AttributeToChange.Intelligence)
         {
-            GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().ChangeIntelligence(attributeChangeAmount);
+            stats.ChangeIntelligence(attributeChangeAmount);
+            isUsable = true;
         }
         else if (attributeToChange == AttributeToChange.Charisma)
         {
-            GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().ChangeCharisma(attributeChangeAmount);
+            stats.ChangeCharisma(attributeChangeAmount);
+            isUsable = true;
         }
         return isUsable;
     }
