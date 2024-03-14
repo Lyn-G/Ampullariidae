@@ -29,7 +29,7 @@ public class PlayerStats : MonoBehaviour
     public int intelligence;
     public int charisma;
 
-    
+
 
     // Selected Weapon Icons and Skill Icons
     public Image weaponIcon;
@@ -109,6 +109,7 @@ public class PlayerStats : MonoBehaviour
         }
         healthText.text = "Health: " + health.ToString();
         // Update UI
+        UpdateAllStatsUI();
     }
 
     public void ChangeMana(int amount)
@@ -120,6 +121,7 @@ public class PlayerStats : MonoBehaviour
         }
         manaText.text = "Mana: " + mana.ToString();
         // Update UI
+        UpdateAllStatsUI();
     }
 
     public void ChangeAttack(int amount)
@@ -127,6 +129,7 @@ public class PlayerStats : MonoBehaviour
         attack += amount;
         attackText.text = "Attack: " + attack.ToString();
         // Update UI
+        UpdateAllStatsUI();
     }
 
     public void ChangeDefense(int amount)
@@ -134,6 +137,7 @@ public class PlayerStats : MonoBehaviour
         defense += amount;
         defenseText.text = "Defense: " + defense.ToString();
         // Update UI
+        UpdateAllStatsUI();
     }
 
     public void ChangeStrength(int amount)
@@ -141,6 +145,7 @@ public class PlayerStats : MonoBehaviour
         strength += amount;
         strengthText.text = "Strength: " + strength.ToString();
         // Update UI
+        UpdateAllStatsUI();
     }
 
     public void ChangeDexterity(int amount)
@@ -148,6 +153,7 @@ public class PlayerStats : MonoBehaviour
         dexterity += amount;
         dexterityText.text = "Dexterity: " + dexterity.ToString();
         // Update UI
+        UpdateAllStatsUI();
     }
 
     public void ChangeIntelligence(int amount)
@@ -155,6 +161,7 @@ public class PlayerStats : MonoBehaviour
         intelligence += amount;
         intelligenceText.text = "Intelligence: " + intelligence.ToString();
         // Update UI
+        UpdateAllStatsUI();
     }
 
     public void ChangeCharisma(int amount)
@@ -162,6 +169,7 @@ public class PlayerStats : MonoBehaviour
         charisma += amount;
         charismaText.text = "Charisma: " + charisma.ToString();
         // Update UI
+        UpdateAllStatsUI();
     }
 
     public void SelectingWeapon(string weaponName)
@@ -265,4 +273,19 @@ public class PlayerStats : MonoBehaviour
     {
         health = maxHealth;
     }
+
+    public void UpdateAllStatsUI()
+    {
+        healthText.text = "Health: " + health.ToString() + "/" + maxHealth.ToString();
+        manaText.text = "Mana: " + mana.ToString() + "/" + maxMana.ToString();
+        attackText.text = "Attack: " + attack.ToString();
+        defenseText.text = "Defense: " + defense.ToString();
+        strengthText.text = "Strength: " + strength.ToString();
+        dexterityText.text = "Dexterity: " + dexterity.ToString();
+        intelligenceText.text = "Intelligence: " + intelligence.ToString();
+        charismaText.text = "Charisma: " + charisma.ToString();
+        // Add other stats as needed
+    }
+
+
 }
