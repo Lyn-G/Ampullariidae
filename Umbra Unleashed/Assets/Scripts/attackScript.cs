@@ -25,17 +25,17 @@ public class attackScript : MonoBehaviour
     {
         // i know how to use on trigger enter, but i forgot the exact syntax and asked chatgpt for an example and learned about
         // this function!
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("taking damage");
-            SetDamage(2);
+        //if (other.CompareTag("Player"))
+        //{
+        //Debug.Log("taking damage");
+        //DealDamage(2);
 
-        }
+        //}
     }
 
-    public void SetDamage(int amount) {
+    public int DealDamage(int amount) {
         currentHealth -= amount;
         if (healthBar) healthBar.SetHealth(currentHealth);
-       
+        return currentHealth;
     }
 }

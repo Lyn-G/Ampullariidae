@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     //player movement values
-    public float speed = 5.0f; // Adjust the speed of the player movement
+    public float speed = 20.0f; // Adjust the speed of the player movement
     private float moveHorizontal; //also used for animations
     private float moveVertical; //also used for animations
 
@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public Animation anim; //reference to the animation component
     public Animator animator; //reference to the animator component
     public SpriteRenderer playerSprite; //player sprite
+    public PlayerStats statsManager; //player stats
 
     //weapon info
     public WeaponHandling.WeaponData currentRangeWeapon; //stores the current range weapon that the player is holding's data, to account for what animation/attack is used.
@@ -21,10 +22,15 @@ public class PlayerController : MonoBehaviour
     public GameObject rangeWeapon; //the actual range weapon game object with the sprite renderer on it
     public GameObject meleeWeapon; //the actual melee weapon game object with the sprite renderer on it
 
+    //ranges
+    public GameObject shortRange;
+    public GameObject mediumRange;
+    public GameObject longRange;
+
     //for animations
     private bool sideFacing = false;
-    private bool flipped;
-    private int attacking; //0 is no attack; 1 is punch; 2 is basic hand thrust, 3 is uppercut
+    private bool flipped = false;
+    private int attacking; //0 is no attack; 1 is punch; 2 is uppercut
     //it is way too much of a hassle to have a bunch of individual bools for EVERY ATTACK.
 
    
@@ -35,7 +41,7 @@ public class PlayerController : MonoBehaviour
         // Get the Rigidbody, Animation, SpriteRenderer component from the player game object
         if (rb == null)
         {
-            rb = playerBody.GetComponent<Rigidbody>();
+            rb = GetComponent<Rigidbody>();
         }
         if (anim == null)
         {
@@ -52,7 +58,8 @@ public class PlayerController : MonoBehaviour
 
         //Get weapon information; if there is no weapon equipped, currentWeapon will default to "Bare Hands"
         //delayed to make sure things load in the proper order
-        Invoke("LoadWeaponData", 0.005f);
+        Invoke("LoadRangeWeaponData", 0.005f);
+        Invoke("LoadMeleeWeaponData", 0.005f);
 
         StartCoroutine(InputCheck());
     }
@@ -86,22 +93,82 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if(attacking == 0)
             {
-                attacking = 1;
-                //after 0.83s, end attack animation
-                Invoke("AttackEnd", 0.83f);
+                //attacking determines animation: 0 is no attack; 1 is punch; 2 is uppercut, 3 is thrust; 4 is slash; 5 is hand thrust.
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    //melee weapon attack - either Sword or Fists
+                    //attack 1 should be a punch for Fists
+                    //          and a thrust for Sword
+                    if (currentMeleeWeapon.type == "Fists")
+                    {
+                        attacking = 1;
+                        shortRange.GetComponent<CombatRange>().DamageToRange(currentMeleeWeapon.minPower, currentMeleeWeapon.maxPower, statsManager.attack);
+                        Invoke("AttackEnd", 0.83f);
+                    }
+                    else if (currentMeleeWeapon.type == "Sword")
+                    {
+                        attacking = 3;
+                        mediumRange.GetComponent<CombatRange>().DamageToRange(currentMeleeWeapon.minPower, currentMeleeWeapon.maxPower, statsManager.attack);
+                        Invoke("AttackEnd", 0.83f);
+                    }
+
+                    //after 0.83s, end attack animation
+                    
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    //melee weapon attack - either Sword or Fists
+                    //attack 1 should be an uppercut for Fists
+                    //          and a slash for Sword
+                    if (currentMeleeWeapon.type == "Fists")
+                    {
+                        shortRange.GetComponent<CombatRange>().DamageToRange(currentMeleeWeapon.minPower, currentMeleeWeapon.maxPower, statsManager.attack);
+                        Invoke("AttackEnd", 0.83f);
+                        attacking = 2;
+                    }
+                    else if (currentMeleeWeapon.type == "Sword")
+                    {
+                        mediumRange.GetComponent<CombatRange>().DamageToRange(currentMeleeWeapon.minPower, currentMeleeWeapon.maxPower, statsManager.attack);
+                        attacking = 4;
+                        Invoke("AttackEnd", 0.83f);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    //ranged weapon attack - either Tome or Staff
+                    if(currentRangeWeapon.type == "Tome")
+                    {
+                        attacking = 5;
+                        mediumRange.GetComponent<CombatRange>().DamageToRange(currentRangeWeapon.minPower, currentRangeWeapon.maxPower, statsManager.attack);
+                        Invoke("AttackEnd", 0.67f);
+                    }
+                    else if (currentRangeWeapon.type == "Staff")
+                    {
+                        attacking = 5;
+                        longRange.GetComponent<CombatRange>().DamageToRange(currentRangeWeapon.minPower, currentRangeWeapon.maxPower, statsManager.attack);
+                        Invoke("AttackEnd", 0.67f);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha4))
+                {
+                    //ranged weapon attack - either Tome or Staff
+                    if (currentRangeWeapon.type == "Tome")
+                    {
+                        attacking = 5;
+                        longRange.GetComponent<CombatRange>().DamageToRange(currentRangeWeapon.minPower, currentRangeWeapon.maxPower, statsManager.attack);
+                        Invoke("AttackEnd", 0.67f);
+                    }
+                    else if (currentRangeWeapon.type == "Staff")
+                    {
+                        attacking = 5;
+                        longRange.GetComponent<CombatRange>().DamageToRange(currentRangeWeapon.minPower, currentRangeWeapon.maxPower, statsManager.attack);
+                        Invoke("AttackEnd", 0.67f);
+                    }
+                }
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                attacking = 2;
-                Invoke("AttackEnd", 0.67f);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                attacking = 3;
-                Invoke("AttackEnd", 0.83f);
-            }
+            
             yield return new WaitForSeconds(0.001f);
         }
     }
@@ -114,15 +181,11 @@ public class PlayerController : MonoBehaviour
     public void LoadRangeWeaponData()
     {
         currentRangeWeapon = rangeWeapon.GetComponent<WeaponInfo>().GetWeaponData();
-        if(currentRangeWeapon != null)
-        Debug.Log("PlayerController: Range Weapon Loaded " + currentRangeWeapon.spriteName + " flavor text: " + currentRangeWeapon.flavorText);
     }
 
     public void LoadMeleeWeaponData()
     {
         currentMeleeWeapon = meleeWeapon.GetComponent<WeaponInfo>().GetWeaponData();
-        if(currentMeleeWeapon != null)
-        Debug.Log("PlayerController: Melee Weapon Loaded " + currentMeleeWeapon.spriteName + " flavor text: " + currentMeleeWeapon.flavorText);
     }
 
     bool IsPathClear(Vector3 direction)
@@ -136,7 +199,7 @@ public class PlayerController : MonoBehaviour
             if (hit.collider.tag == "Terrain")
             {
                 // Terrain was hit, movement in this direction is blocked
-                Debug.Log("Terrain detected");
+                //Debug.Log("Terrain detected");
                 return false;
             }
         }
