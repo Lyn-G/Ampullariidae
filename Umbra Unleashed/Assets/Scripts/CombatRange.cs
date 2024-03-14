@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CombatRange : MonoBehaviour
 {
     public Collider thisCollider;
-    public static List<GameObject> enemiesInRange = new List<GameObject>();
+    public List<GameObject> enemiesInRange = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +34,20 @@ public class CombatRange : MonoBehaviour
         }
     }
 
-    public static void DamageToRange()
+    public void DamageToRange(int minPower, int maxPower, int attack)
     {
+        //pass in the current weapon's minPower, maxPower, and the stats manager's attack variable
+        foreach(GameObject enemy in enemiesInRange)
+        {
+            int damageToDeal = Random.Range(minPower, maxPower+1);
 
+            attackScript enemyInfo = enemy.GetComponent<attackScript>();
+            int enemyHealth = enemyInfo.DealDamage(damageToDeal);
+            if(enemyHealth <= 0)
+            {
+                enemiesInRange.Remove(enemy);
+                Destroy(enemy);
+            }
+        }
     }
 }

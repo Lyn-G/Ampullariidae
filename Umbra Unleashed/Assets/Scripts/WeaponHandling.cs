@@ -33,16 +33,23 @@ public class WeaponHandling : MonoBehaviour
     void Start()
     {
         weaponList = JsonUtility.FromJson<WeaponList>(jsonData.text);
-        foreach (var weapon in weaponList.weapon)
-        {
-            Debug.Log("Loaded weapon: " + weapon.name);
-        }
+        //foreach (var weapon in weaponList.weapon)
+        //{
+        //}    Debug.Log("Loaded weapon: " + weapon.name);
+        //}
     }
 
 
     public static WeaponData GetWeaponDataByName(string weaponName)
     {
+        //using sprite name, not actual name
         return weaponList.weapon.Find(weapon => weapon.name == weaponName);
+    }
+
+    public static WeaponData GetWeaponDataBySpriteName(string weaponSpriteName)
+    {
+        //using sprite name, not actual name
+        return weaponList.weapon.Find(weapon => weapon.spriteName == weaponSpriteName);
     }
 
 }

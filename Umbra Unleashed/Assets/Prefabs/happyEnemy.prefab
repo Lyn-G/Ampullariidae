@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 5849767294550544347}
   - component: {fileID: 3741234289512024324}
   - component: {fileID: 759204845922018965}
-  - component: {fileID: 2246669334324336403}
   - component: {fileID: 442511217628690244}
   m_Layer: 0
   m_Name: attackHitbox
@@ -184,21 +183,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2246669334324336403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4905403000878866012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cce4f7ad9db261742a30cdce76234c0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
-  currentHealth: 0
-  maxHealth: 20
 --- !u!114 &442511217628690244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +211,7 @@ GameObject:
   - component: {fileID: 5745725269736813174}
   - component: {fileID: 5098679250367435245}
   - component: {fileID: 3318212130287168913}
+  - component: {fileID: 5154412258743359914}
   m_Layer: 0
   m_Name: happyEnemy
   m_TagString: Enemy
@@ -419,6 +404,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5154412258743359914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514425362903132607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce4f7ad9db261742a30cdce76234c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 442511217628690244}
+  currentHealth: 0
+  maxHealth: 20
 --- !u!1 &7531704110761628462
 GameObject:
   m_ObjectHideFlags: 0
