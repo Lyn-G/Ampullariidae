@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     //for animations
     private bool sideFacing = false;
     private bool flipped;
-    private int attacking; //0 is no attack; 1 is punch; 2 is basic hand thrust, 3 is uppercut
+    private int attacking; //0 is no attack; 1 is punch; 2 is uppercut
     //it is way too much of a hassle to have a bunch of individual bools for EVERY ATTACK.
 
     void Start()
@@ -82,21 +82,51 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
+            //attacking determines animation: 0 is no attack; 1 is punch; 2 is uppercut, 3 is thrust; 4 is slash; 5 is hand thrust.
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                attacking = 1;
+                //melee weapon attack - either Sword or Fists
+                //attack 1 should be a punch for Fists
+                //          and a thrust for Sword
+                if(currentWeapon.type == "Fists")
+                {
+                    attacking = 1;
+                }
+                else
+                {
+                    attacking = 3;
+                }
+                
                 //after 0.83s, end attack animation
                 Invoke("AttackEnd", 0.83f);
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
+                //melee weapon attack - either Sword or Fists
+                //attack 1 should be an uppercut for Fists
+                //          and a slash for Sword
+                if (currentWeapon.type == "Fists")
+                {
+                    attacking = 2;
+                }
+                else
+                {
+                    attacking = 4;
+                }
                 attacking = 2;
                 Invoke("AttackEnd", 0.67f);
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
+                //ranged weapon attack - either Tome or Staff
                 attacking = 3;
                 Invoke("AttackEnd", 0.83f);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                //ranged weapon attack - either Tome or Staff
+                //attacking = 4;
+                //Invoke("AttackEnd", 0.83f);
             }
             yield return new WaitForSeconds(0.001f);
         }

@@ -28,12 +28,12 @@ public class attackScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("taking damage");
-            SetDamage(2);
+            DealDamage(2);
 
         }
     }
 
-    public void SetDamage(int amount) {
+    public void DealDamage(int amount) {
         currentHealth -= amount;
         if (healthBar) healthBar.SetHealth(currentHealth);
        
