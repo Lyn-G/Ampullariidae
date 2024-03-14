@@ -34,8 +34,14 @@ public class CombatRange : MonoBehaviour
         }
     }
 
-    public void DamageToRange(int minPower, int maxPower, int attack)
+    public void DamageToRange(int minPower, int maxPower, float duration)
     {
+        if(enemiesInRange.Count > 0)
+        {
+            //screenshake!
+            GameObject.Find("Camera").GetComponent<PlayerMovement>().CauseScreenShake(duration);
+        }
+
         //pass in the current weapon's minPower, maxPower, and the stats manager's attack variable
         foreach(GameObject enemy in enemiesInRange)
         {
