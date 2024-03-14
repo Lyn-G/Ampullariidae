@@ -17,6 +17,7 @@ public class WeaponInfo : MonoBehaviour
         Invoke("LoadWeaponData", 0.001f);
     }
 
+
     public void LoadWeaponData()
     {
         //separate function for delayed invokation; requires weaponList to already be loaded
