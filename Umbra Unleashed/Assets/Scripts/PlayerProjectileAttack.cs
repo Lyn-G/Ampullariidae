@@ -8,24 +8,33 @@ public class PlayerProjectileAttack : MonoBehaviour
     public GameObject projectile; // public GameObject to select in the inspector
     // public Transform spawn; // where projectile spawns
     public float speed = 10; // speed of projectile
-    public float coolDown; // this is how long the cool down is
-    float coolDownStatus; // this is how long the cooldown 
+    public float meleeCoolDown; // this is how long the cool down is
+    float meleeCoolDownStatus; // this is how long the cooldown 
+    public float projectileCoolDown; // this is how long the cool down is
+    float projectileCoolDownStatus; // this is how long the cooldown 
     string playerDirection;
-    
+    public GameObject meleeHitbox;
     //[SerializeField] private Cooldown cooldown;
     // Start is called before the first frame update
     void Start()
     {
+        meleeHitbox = transform.Find("attackHitbox").gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        coolDownStatus -= Time.deltaTime;
+        projectileCoolDownStatus -= Time.deltaTime;
        if(Input.GetKeyDown(KeyCode.Alpha1)) // key code for 1 on the top of the keyboard
         {
             Debug.Log("1 is being pressed.");
             CastSpell();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2)) // key code for 1 on the top of the keyboard
+        {
+            Debug.Log("2 is being pressed.");
+            Punch();
         }
 
         if (Input.GetKeyDown(KeyCode.W)) // key code for 1 on the top of the keyboard
@@ -43,11 +52,25 @@ public class PlayerProjectileAttack : MonoBehaviour
         }
     }
 
+    public void Punch()
+    {// this is some of the ugliest code ever but it is last minute! and its getting the job done!
+        // resets coold down and sets the punch hitbox to be active for one second ( pretty generous)
+        if (meleeCoolDownStatus > 0) return;
+        StartCoroutine(punchHitbox());
+        meleeCoolDownStatus = meleeCoolDown;
+    }
+    IEnumerator punchHitbox()
+    {
 
+        yield return new WaitForSeconds(.22f);
+        meleeHitbox.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        meleeHitbox.SetActive(false);
+    }
 
     public void CastSpell()
     {// this is some of the ugliest code ever but it is last minute! and its getting the job done!
-        if (coolDownStatus > 0) return;
+        if (projectileCoolDownStatus > 0) return;
         Vector3 bulletDirection = Vector3.forward;
         if (playerDirection == "forward")
         {
@@ -72,6 +95,6 @@ public class PlayerProjectileAttack : MonoBehaviour
             spellCast.velocity = bulletDirection * speed;
             Destroy(spell, 2f);
         }
-        coolDownStatus = coolDown;
+        projectileCoolDownStatus = projectileCoolDown;
     }
 }

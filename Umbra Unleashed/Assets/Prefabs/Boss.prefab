@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5568248184344910314}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
   PathfindRadius: 40
   animator: {fileID: 0}
   state: 0
-  knockbackForce: 0
+  knockbackForce: 23.25
   health: 40
 --- !u!1 &4360706407873741908
 GameObject:

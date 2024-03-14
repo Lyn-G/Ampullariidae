@@ -14,6 +14,10 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Boss"))
+        {
+            other.gameObject.GetComponent<bossScript>().outsideHurt(transform.position, dammage);
+        }
         if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<EnemyPathfinding>().outsideHurt(transform.position, dammage);
