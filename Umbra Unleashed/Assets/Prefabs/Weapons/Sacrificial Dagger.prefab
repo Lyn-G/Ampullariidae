@@ -51,7 +51,7 @@ MonoBehaviour:
   quantity: 1
   sprite: {fileID: 21300000, guid: 97847ae5a4416c44381b35bfc270dfb7, type: 3}
   itemDescription: '"A blade darker than the darkest night"'
-  itemType: 0
+  itemType: 1
 --- !u!54 &-7659549512587651911
 Rigidbody:
   m_ObjectHideFlags: 0

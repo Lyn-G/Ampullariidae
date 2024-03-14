@@ -21,7 +21,7 @@ public class bossScript : MonoBehaviour
     GameObject attackHitbox;
     public float knockbackForce;
     public int health;
-    public GameObject hurtparticle;
+
 
     // Start is called before the first frame update
     void Start()
@@ -130,8 +130,7 @@ public class bossScript : MonoBehaviour
         // Wait for the length of the animation
 
         // i used chatgpt to find direction vector for hurt force
-        GameObject effect = Instantiate(hurtparticle, transform.position, Quaternion.identity, transform);
-        Destroy(effect, 2f);
+
         Vector3 direction = (transform.position - hurter).normalized;
         // Apply the force in the calculated direction
         rb.AddForce(direction * knockbackForce, ForceMode.Impulse);

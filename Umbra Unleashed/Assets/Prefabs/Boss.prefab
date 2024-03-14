@@ -205,7 +205,6 @@ MonoBehaviour:
   state: 0
   knockbackForce: 23.25
   health: 40
-  hurtparticle: {fileID: 1207153681953951669, guid: 8d601c8ab87d0b342986d9e7d34155bc, type: 3}
 --- !u!1 &4360706407873741908
 GameObject:
   m_ObjectHideFlags: 0

@@ -430,7 +430,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisCollider: {fileID: 3294402841945549425}
-  enemiesInRange: []
 --- !u!1 &3006974213076009797
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,7 +654,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisCollider: {fileID: 8273456041898191428}
-  enemiesInRange: []
 --- !u!1 &5429383829913223402
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,7 +807,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteName: 
-  weaponType: 
 --- !u!65 &4785798707219970082
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -897,8 +894,8 @@ GameObject:
   - component: {fileID: 3099931794631619388}
   - component: {fileID: 6164574202713407027}
   - component: {fileID: 6804341918567855563}
-  - component: {fileID: 5866027352929656353}
-  - component: {fileID: 3450750345912593420}
+  - component: {fileID: 209186913446493696}
+  - component: {fileID: 1418096758692146192}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -946,7 +943,6 @@ MonoBehaviour:
   anim: {fileID: 6617727816586073530}
   animator: {fileID: 6623867569859444772}
   playerSprite: {fileID: 4593114526589000091}
-  statsManager: {fileID: 0}
   currentRangeWeapon:
     type: 
     spriteName: 
@@ -971,9 +967,6 @@ MonoBehaviour:
     flavorText: 
   rangeWeapon: {fileID: 1071615015068972709}
   meleeWeapon: {fileID: 6289520547317726643}
-  shortRange: {fileID: 0}
-  mediumRange: {fileID: 0}
-  longRange: {fileID: 0}
 --- !u!114 &6164574202713407027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,23 +1030,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.34, y: 0.53, z: 0.34}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3450750345912593420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6516307906518208103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6401b5afa4104f498bbb3f9c7987f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 5950513463463406922, guid: 05bdb87c9e3becd44b2925c8f7cae0f8, type: 3}
-  speed: 10
-  meleeCoolDown: 0
-  projectileCoolDown: 0
-  meleeHitbox: {fileID: 0}
 --- !u!1 &7759018206356747167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,6 +1040,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6286307978062019916}
   - component: {fileID: 7507531832127174396}
+  - component: {fileID: 3450750345912593420}
   m_Layer: 0
   m_Name: MediumRange
   m_TagString: Untagged
@@ -1107,6 +1084,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3450750345912593420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6516307906518208103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6401b5afa4104f498bbb3f9c7987f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 5950513463463406922, guid: 05bdb87c9e3becd44b2925c8f7cae0f8, type: 3}
+  speed: 10
+  cooldown: {fileID: 0}
+  thisCollider: {fileID: 7507531832127174396}
+  meleeCoolDown: 0
+  projectileCoolDown: 0
+  meleeHitbox: {fileID: 0}
 --- !u!1001 &3401789746101983832
 PrefabInstance:
   m_ObjectHideFlags: 0

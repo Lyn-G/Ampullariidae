@@ -125,4 +125,4 @@ MonoBehaviour:
   quantity: 1
   sprite: {fileID: 21300000, guid: 2fad9a58c7ec9cd40b467e87f0842fe0, type: 3}
   itemDescription: '"Smells moldy"'
-  itemType: 0
+  itemType: 2
