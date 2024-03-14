@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1706883944919239165}
   m_Layer: 0
   m_Name: Weapon
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 1.2, y: 1.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 5746086750563114381}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,7 +208,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1.019554, y: 2.2240407, z: 0.7590685}
   m_Center: {x: 0, y: 0.1089078, z: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 3903698956369159700}
   m_Layer: 0
   m_Name: PlayerHolder
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -543,10 +543,11 @@ GameObject:
   - component: {fileID: 5486849552676858318}
   - component: {fileID: 3099931794631619388}
   - component: {fileID: 6164574202713407027}
-  - component: {fileID: 5861394849407641429}
+  - component: {fileID: 6804341918567855563}
+  - component: {fileID: 209186913446493696}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -583,8 +584,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9cae1611da146748b0303987e1d1180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  rb: {fileID: 5861394849407641429}
+  speed: 20
+  rb: {fileID: 6804341918567855563}
   anim: {fileID: 6617727816586073530}
   animator: {fileID: 6623867569859444772}
   playerSprite: {fileID: 4593114526589000091}
@@ -615,7 +616,7 @@ MonoBehaviour:
   moveSpeed: 2
   playerBody: {fileID: 5861394849407641429}
   playerSprite: {fileID: 4593114526589000091}
---- !u!54 &5861394849407641429
+--- !u!54 &6804341918567855563
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -680,7 +681,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7759018206356747167}
+  m_GameObject: {fileID: 6516307906518208103}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -693,7 +694,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.34, y: 0.53, z: 0.34}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3401789746101983832
 PrefabInstance:

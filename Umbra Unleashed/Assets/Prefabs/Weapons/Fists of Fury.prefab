@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 01e60020deff41c458569f1c2b54038e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d3c0e2e452cbec44eafe7d4f3270314b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Fists of Fury
   quantity: 1
-  sprite: {fileID: 21300000, guid: 01e60020deff41c458569f1c2b54038e, type: 3}
+  sprite: {fileID: 21300000, guid: d3c0e2e452cbec44eafe7d4f3270314b, type: 3}
   itemDescription: '"Trained by martial arts masters"'
   itemType: 1
 --- !u!114 &6265659174249167493
