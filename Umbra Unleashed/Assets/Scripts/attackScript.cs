@@ -8,7 +8,8 @@ public class attackScript : MonoBehaviour
     public HealthBar healthBar;
     public int currentHealth;
     public int maxHealth = 20;
-    
+    public GameObject playerhurtparticle;
+
     // Start is called before the first frame update
     void Start()
     {
