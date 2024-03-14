@@ -31,7 +31,8 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
 
     // Variables to update Player's current weapon
     public GameObject Player;
-    public GameObject PlayerWeapon;
+    public GameObject PlayerRangeWeapon;
+    public GameObject PlayerMeleeWeapon;
 
     private void Start()
     {
@@ -73,7 +74,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         //Update the Display Image
         playerDisplayImage.sprite = itemSprite;
         slotInUse = true;
-        
+
         //Update Player Attack stat
         PlayerStats stats = GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>();
         var weaponData = WeaponHandling.GetWeaponDataByName(itemName);
@@ -117,19 +118,29 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         //Update Player's current weapon if its a Staff or Tome by changing its sprite
         if (weaponType == "Staff" || weaponType == "Tome")
         {
-            PlayerWeapon.GetComponent<SpriteRenderer>().sprite = itemSprite;
-            PlayerWeapon.GetComponent<WeaponInfo>().LoadWeaponData();
-            Player.GetComponent<PlayerController>().LoadWeaponData();
+            PlayerRangeWeapon.GetComponent<SpriteRenderer>().sprite = itemSprite;
+            PlayerRangeWeapon.GetComponent<WeaponInfo>().LoadRangeWeaponData();
+            Player.GetComponent<PlayerController>().LoadRangeWeaponData();
+        }
+        if (weaponType == "Blade" || weaponType == "Fists")
+        {
+            PlayerMeleeWeapon.GetComponent<SpriteRenderer>().sprite = itemSprite;
+            PlayerMeleeWeapon.GetComponent<WeaponInfo>().LoadMeleeWeaponData();
+            Player.GetComponent<PlayerController>().LoadMeleeWeaponData();
         }
 
     }
 
     public void UnequipGear()
     {
-        if(!slotInUse)
+        if (!slotInUse)
         {
             return;
         }
+        //get the item type for the item being unequipped
+        var weaponData = WeaponHandling.GetWeaponDataByName(itemName);
+        string weaponType = weaponData.type;
+
         inventoryManager.DeselectAll();
         inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType);
         //Unequip the item
@@ -145,9 +156,29 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         Debug.Log("UnEquip: Updating Player Attack Stat...");
         GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().ChangeAttack(-statChangeAmount);
 
+        //Update Player's current weapon to be empty
+        
+        if (weaponType == "Staff" || weaponType == "Tome")
+        {
+            PlayerRangeWeapon.GetComponent<SpriteRenderer>().sprite = null;
+            PlayerRangeWeapon.GetComponent<WeaponInfo>().LoadRangeWeaponData();
+            Player.GetComponent<PlayerController>().LoadRangeWeaponData();
+        }
+        if (weaponType == "Blade" || weaponType == "Fists")
+        {
+            PlayerMeleeWeapon.GetComponent<SpriteRenderer>().sprite = null;
+            PlayerMeleeWeapon.GetComponent<WeaponInfo>().LoadMeleeWeaponData();
+            Player.GetComponent<PlayerController>().LoadMeleeWeaponData();
+        }
+
+        
+
+        //Updating Player equipped weapon image in UI
+        playerDisplayImage.sprite = emptySlotSprite;
+
         //Updating Weapon Stat UI
         GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().DeselectingWeapon();
-        
+
     }
     public void OnLeftClick()
     {
