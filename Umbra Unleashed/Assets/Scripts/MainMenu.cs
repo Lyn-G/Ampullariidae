@@ -4,19 +4,29 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    // public GameObject mainMenu;
+    public GameObject mainMenu;
+    public GameObject creditsMenu;
 
-    // Start is called before the first frame update
-//     void Start()
-//     {
-//         Time.timeScale = 0f;
-//         mainMenu.SetActive(true);
-//     }
+    private void Start() {
+        creditsMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
 
-//    public void StartGame() {
-//         mainMenu.SetActive(false);
-//         Time.timeScale = 1f;
-//    }
+    public void ShowMain() {
+        mainMenu.SetActive(true);
+    }
+
+    public void HideMain() {
+        mainMenu.SetActive(false);
+    }
+
+    public void ShowCredits() {
+        creditsMenu.SetActive(true);
+    }
+
+    public void HideCredits() {
+        creditsMenu.SetActive(false);
+    }
 
    public void QuitGame()
     {
