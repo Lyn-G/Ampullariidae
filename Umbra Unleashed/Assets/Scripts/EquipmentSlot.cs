@@ -73,11 +73,11 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     private void OnLeftClick()
     {
 
-        if (isSelected)
+        if (isFull&&isSelected)
         {
             EquipGear();
         }
-        else
+        else if (isFull && !isSelected)
         {
             inventoryManager.DeselectAll();
             Debug.Log("Left click on " + itemName);
@@ -86,6 +86,13 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
 
             // Fetch and display weapon stats
             GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().SelectingWeapon(itemName);
+        }
+        else
+        {
+            Debug.Log("Slot is empty");
+            inventoryManager.DeselectAll();
+            selectedShader.SetActive(true);
+            isSelected = true;
         }
     }
 
