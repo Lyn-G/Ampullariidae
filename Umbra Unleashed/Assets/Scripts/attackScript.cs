@@ -30,14 +30,14 @@ public class attackScript : MonoBehaviour
         {
             other.gameObject.GetComponent<PlayerController>().takeDammage(transform.position);
             Debug.Log("taking damage");
-            SetDamage(2);
+            //SetDamage(2);
 
         }
     }
 
-    public void SetDamage(int amount) {
+    public int DealDamage(int amount) {
         currentHealth -= amount;
         if (healthBar) healthBar.SetHealth(currentHealth);
-       
+        return currentHealth;
     }
 }

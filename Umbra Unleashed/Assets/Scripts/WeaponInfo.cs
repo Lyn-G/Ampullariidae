@@ -10,53 +10,53 @@ public class WeaponInfo : MonoBehaviour
 
     //it will use the name to get the weapon info
     public string spriteName;
+    public string weaponType;
     public static WeaponHandling.WeaponData weaponData;
 
     void Start()
     {
-        Invoke("LoadWeaponData", 0.001f);
+        if(weaponType == "melee")
+        {
+            Invoke("LoadMeleeWeaponData", 0.001f);
+        }
+        else if(weaponType == "ranged")
+        {
+            Invoke("LoadRangeWeaponData", 0.001f);
+        }
     }
 
 
     public void LoadMeleeWeaponData()
     {
         //separate function for delayed invokation; requires weaponList to already be loaded
-        Debug.Log("Loading Weapon Data...");
         
         if (this.gameObject.GetComponent<SpriteRenderer>().sprite!= null)
         {
-            Debug.Log("Sprite Name: " + this.gameObject.GetComponent<SpriteRenderer>().sprite.name);
             spriteName = this.gameObject.GetComponent<SpriteRenderer>().sprite.name;
             weaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == spriteName);
-            Debug.Log("WeaponData loaded: " + weaponData.spriteName+ " flavor text: " + weaponData.flavorText);
         }
         
         else
         {
-            Debug.Log("No weapon equipped");
+            spriteName = "bare_hands";
             weaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == "bare_hands");
-            //this.gameObject.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("bare_hands");
         }
     }
 
     public void LoadRangeWeaponData()
     {
         //separate function for delayed invokation; requires weaponList to already be loaded
-        Debug.Log("Loading Weapon Data...");
         
         if (this.gameObject.GetComponent<SpriteRenderer>().sprite!= null)
         {
-            Debug.Log("Sprite Name: " + this.gameObject.GetComponent<SpriteRenderer>().sprite.name);
             spriteName = this.gameObject.GetComponent<SpriteRenderer>().sprite.name;
             weaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == spriteName);
-            Debug.Log("WeaponData loaded: " + weaponData.spriteName+ " flavor text: " + weaponData.flavorText);
         }
         
         else
         {
-            Debug.Log("No weapon equipped");
-            weaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == "tuning_rod");
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("tuning_rod");
+            spriteName = "bare_hands"; //dude im so tired.
+            weaponData = WeaponHandling.weaponList.weapon.Find(weaponEntry => weaponEntry.spriteName == spriteName);
         }
     }
 
