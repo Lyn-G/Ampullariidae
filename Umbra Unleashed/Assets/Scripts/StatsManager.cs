@@ -29,6 +29,8 @@ public class PlayerStats : MonoBehaviour
     public int intelligence;
     public int charisma;
 
+    
+
     // Selected Weapon Icons and Skill Icons
     public Image weaponIcon;
     public Image skillIcon1;
