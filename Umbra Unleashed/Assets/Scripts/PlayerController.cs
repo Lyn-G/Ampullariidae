@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
         attacking = 0;
     }
 
-    private void LoadWeaponData()
+    public void LoadWeaponData()
     {
         currentWeapon = weapon.GetComponent<WeaponInfo>().GetWeaponData();
     }

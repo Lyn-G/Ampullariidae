@@ -29,6 +29,10 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     private InventoryManager inventoryManager;
     private WeaponHandling weaponHandling;
 
+    // Variables to update Player's current weapon
+    public GameObject Player;
+    public GameObject PlayerWeapon;
+
     private void Start()
     {
         inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
@@ -69,7 +73,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         //Update the Display Image
         playerDisplayImage.sprite = itemSprite;
         slotInUse = true;
-
+        
         //Update Player Attack stat
         PlayerStats stats = GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>();
         var weaponData = WeaponHandling.GetWeaponDataByName(itemName);
@@ -110,7 +114,13 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         Debug.Log("Stat Change Amount: " + statChangeAmount);
         GameObject.FindGameObjectWithTag("StatsManager").GetComponent<PlayerStats>().ChangeAttack(statChangeAmount);
 
-        
+        //Update Player's current weapon if its a Staff or Tome by changing its sprite
+        if (weaponType == "Staff" || weaponType == "Tome")
+        {
+            PlayerWeapon.GetComponent<SpriteRenderer>().sprite = itemSprite;
+            PlayerWeapon.GetComponent<WeaponInfo>().LoadWeaponData();
+            Player.GetComponent<PlayerController>().LoadWeaponData();
+        }
 
     }
 
