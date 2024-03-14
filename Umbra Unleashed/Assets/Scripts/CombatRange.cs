@@ -34,20 +34,28 @@ public class CombatRange : MonoBehaviour
         }
     }
 
-    public void DamageToRange(int minPower, int maxPower, int attack)
+    public void DamageToRange(int minPower, int maxPower, float duration)
     {
-        //pass in the current weapon's minPower, maxPower, and the stats manager's attack variable
-        foreach(GameObject enemy in enemiesInRange)
+        if(enemiesInRange.Count > 0)
         {
-            int damageToDeal = Random.Range(minPower, maxPower+1);
-
-            attackScript enemyInfo = enemy.GetComponent<attackScript>();
-            int enemyHealth = enemyInfo.DealDamage(damageToDeal);
-            if(enemyHealth <= 0)
-            {
-                enemiesInRange.Remove(enemy);
-                Destroy(enemy);
-            }
+            //screenshake!
+            GameObject.Find("Camera").GetComponent<PlayerMovement>().CauseScreenShake(duration);
         }
+
+        //pass in the current weapon's minPower, maxPower, and the stats manager's attack variable
+        for(int i=0; i < enemiesInRange.Count; i++)
+{
+    GameObject enemy = enemiesInRange[i];
+    int damageToDeal = Random.Range(minPower, maxPower+1);
+
+    attackScript enemyInfo = enemy.GetComponent<attackScript>();
+    int enemyHealth = enemyInfo.DealDamage(damageToDeal);
+    if(enemyHealth <= 0)
+    {
+        enemiesInRange.Remove(enemy);
+        Destroy(enemy);
+        i--;
+    }
+}
     }
 }

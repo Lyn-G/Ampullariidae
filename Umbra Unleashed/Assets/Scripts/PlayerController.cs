@@ -98,19 +98,19 @@ public class PlayerController : MonoBehaviour
                 //attacking determines animation: 0 is no attack; 1 is punch; 2 is uppercut, 3 is thrust; 4 is slash; 5 is hand thrust.
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
-                    //melee weapon attack - either Sword or Fists
+                    //melee weapon attack - either Blade or Fists
                     //attack 1 should be a punch for Fists
-                    //          and a thrust for Sword
+                    //          and a thrust for Blade
                     if (currentMeleeWeapon.type == "Fists")
                     {
                         attacking = 1;
-                        shortRange.GetComponent<CombatRange>().DamageToRange(currentMeleeWeapon.minPower, currentMeleeWeapon.maxPower, statsManager.attack);
+                        shortRange.GetComponent<CombatRange>().DamageToRange(currentMeleeWeapon.minPower, currentMeleeWeapon.maxPower, 0.2f);
                         Invoke("AttackEnd", 0.83f);
                     }
-                    else if (currentMeleeWeapon.type == "Sword")
+                    else if (currentMeleeWeapon.type == "Blade")
                     {
                         attacking = 3;
-                        mediumRange.GetComponent<CombatRange>().DamageToRange(currentMeleeWeapon.minPower, currentMeleeWeapon.maxPower, statsManager.attack);
+                        mediumRange.GetComponent<CombatRange>().DamageToRange(currentMeleeWeapon.minPower, currentMeleeWeapon.maxPower, 0.2f);
                         Invoke("AttackEnd", 0.83f);
                     }
 
@@ -119,19 +119,19 @@ public class PlayerController : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
-                    //melee weapon attack - either Sword or Fists
+                    //melee weapon attack - either Blade or Fists
                     //attack 1 should be an uppercut for Fists
-                    //          and a slash for Sword
+                    //          and a slash for Blade
                     if (currentMeleeWeapon.type == "Fists")
                     {
-                        shortRange.GetComponent<CombatRange>().DamageToRange(currentMeleeWeapon.minPower, currentMeleeWeapon.maxPower, statsManager.attack);
-                        Invoke("AttackEnd", 0.83f);
                         attacking = 2;
+                        shortRange.GetComponent<CombatRange>().DamageToRange(currentMeleeWeapon.minPower, currentMeleeWeapon.maxPower, 0.2f);
+                        Invoke("AttackEnd", 0.83f);
                     }
-                    else if (currentMeleeWeapon.type == "Sword")
+                    else if (currentMeleeWeapon.type == "Blade")
                     {
-                        mediumRange.GetComponent<CombatRange>().DamageToRange(currentMeleeWeapon.minPower, currentMeleeWeapon.maxPower, statsManager.attack);
                         attacking = 4;
+                        mediumRange.GetComponent<CombatRange>().DamageToRange(currentMeleeWeapon.minPower, currentMeleeWeapon.maxPower, 0.2f);
                         Invoke("AttackEnd", 0.83f);
                     }
                 }
@@ -141,13 +141,13 @@ public class PlayerController : MonoBehaviour
                     if(currentRangeWeapon.type == "Tome")
                     {
                         attacking = 5;
-                        mediumRange.GetComponent<CombatRange>().DamageToRange(currentRangeWeapon.minPower, currentRangeWeapon.maxPower, statsManager.attack);
+                        mediumRange.GetComponent<CombatRange>().DamageToRange(currentRangeWeapon.minPower, currentRangeWeapon.maxPower, 0.2f);
                         Invoke("AttackEnd", 0.67f);
                     }
                     else if (currentRangeWeapon.type == "Staff")
                     {
                         attacking = 5;
-                        longRange.GetComponent<CombatRange>().DamageToRange(currentRangeWeapon.minPower, currentRangeWeapon.maxPower, statsManager.attack);
+                        longRange.GetComponent<CombatRange>().DamageToRange(currentRangeWeapon.minPower, currentRangeWeapon.maxPower, 0.2f);
                         Invoke("AttackEnd", 0.67f);
                     }
                 }
@@ -157,13 +157,13 @@ public class PlayerController : MonoBehaviour
                     if (currentRangeWeapon.type == "Tome")
                     {
                         attacking = 5;
-                        longRange.GetComponent<CombatRange>().DamageToRange(currentRangeWeapon.minPower, currentRangeWeapon.maxPower, statsManager.attack);
+                        longRange.GetComponent<CombatRange>().DamageToRange(currentRangeWeapon.minPower, currentRangeWeapon.maxPower, 0.2f);
                         Invoke("AttackEnd", 0.67f);
                     }
                     else if (currentRangeWeapon.type == "Staff")
                     {
                         attacking = 5;
-                        longRange.GetComponent<CombatRange>().DamageToRange(currentRangeWeapon.minPower, currentRangeWeapon.maxPower, statsManager.attack);
+                        longRange.GetComponent<CombatRange>().DamageToRange(currentRangeWeapon.minPower, currentRangeWeapon.maxPower, 0.2f);
                         Invoke("AttackEnd", 0.67f);
                     }
                 }
