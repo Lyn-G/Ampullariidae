@@ -48,6 +48,19 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private Sprite brassKnucklesSprite;
     [SerializeField] private Sprite powerGloveSprite;
 
+    //Blades
+    [SerializeField] private Sprite cutlassSprite;
+    [SerializeField] private Sprite busterSwordSprite;
+    [SerializeField] private Sprite woodenSwordSprite;
+    [SerializeField] private Sprite sacrificialDaggerSprite;
+
+    //Tomes
+    [SerializeField] private Sprite decayedDictionarySprite;
+    [SerializeField] private Sprite diviningGuideSprite;
+    [SerializeField] private Sprite librariansLedgerSprite;
+    [SerializeField] private Sprite planisphereSprite;
+    
+
     //Skill Icons
 
     //Staffs
@@ -79,6 +92,8 @@ public class PlayerStats : MonoBehaviour
     //powerGlove
     [SerializeField] private Sprite chargePunchSprite;
     [SerializeField] private Sprite launchSprite;
+
+    //
 
     private void Start()
     {
@@ -226,7 +241,48 @@ public class PlayerStats : MonoBehaviour
                 skillIcon1.sprite = chargePunchSprite;
                 skillIcon2.sprite = launchSprite;
                 break;
-                // ... and so on for each weapon ...
+            //Blades
+            case "Cutlass":
+                weaponIcon.sprite = cutlassSprite;
+                skillIcon1.sprite = null;
+                skillIcon2.sprite = null;
+                break;
+            case "Buster Sword":
+                weaponIcon.sprite = busterSwordSprite;
+                skillIcon1.sprite = null;
+                skillIcon2.sprite = null;
+                break;
+            case "Wooden Sword":
+                weaponIcon.sprite = woodenSwordSprite;
+                skillIcon1.sprite = null;
+                skillIcon2.sprite = null;
+                break;
+            case "Sacrificial Dagger":
+                weaponIcon.sprite = sacrificialDaggerSprite;
+                skillIcon1.sprite = null;
+                skillIcon2.sprite = null;
+                break;
+            //Tomes
+            case "Decayed Dictionary":
+                weaponIcon.sprite = decayedDictionarySprite;
+                skillIcon1.sprite = null;
+                skillIcon2.sprite = null;
+                break;
+            case "Divining Guide":
+                weaponIcon.sprite = diviningGuideSprite;
+                skillIcon1.sprite = null;
+                skillIcon2.sprite = null;
+                break;
+            case "Librarian's Ledger":
+                weaponIcon.sprite = librariansLedgerSprite;
+                skillIcon1.sprite = null;
+                skillIcon2.sprite = null;
+                break;
+            case "Planisphere":
+                weaponIcon.sprite = planisphereSprite;
+                skillIcon1.sprite = null;
+                skillIcon2.sprite = null;
+                break;
         }
 
     }
