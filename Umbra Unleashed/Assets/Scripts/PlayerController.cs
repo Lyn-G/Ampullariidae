@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private int attacking; //0 is no attack; 1 is punch; 2 is basic hand thrust, 3 is uppercut
     //it is way too much of a hassle to have a bunch of individual bools for EVERY ATTACK.
 
+   
+
     void Start()
     {
         GameObject playerBody = transform.GetChild(0).gameObject;
@@ -60,6 +62,7 @@ public class PlayerController : MonoBehaviour
         // Handle player movement
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
+        
 
         //animations
         CheckDirection();
