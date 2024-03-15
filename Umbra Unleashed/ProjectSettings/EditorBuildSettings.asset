@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 68606ac23339773429af2ca207a65730
+  - enabled: 1
+    path: Assets/Scenes/2.5DTestScene.unity
+    guid: 9bbc579dc32d9a54baa97f5b3ce6e3db
+  - enabled: 1
+    path: Assets/Scenes/CommonTown.unity
+    guid: 12afce2ea97e99f4980e24520c06a271
+  - enabled: 1
+    path: Assets/Scenes/BossFight.unity
+    guid: a38042405ee207b418a1f1488fbbd514
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 583d9172ebfdaaa48a57515bf0b2942f, type: 2}
   m_UseUCBPForAssetBundles: 0
