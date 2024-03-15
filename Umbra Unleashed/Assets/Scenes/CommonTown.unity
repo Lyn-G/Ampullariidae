@@ -10178,7 +10178,7 @@ GameObject:
   - component: {fileID: 1099215460}
   - component: {fileID: 1099215464}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: SceneSwapper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10285,7 +10285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf3de2ef9b6d2e4494a640b92c77062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 1
+  scene: 3
 --- !u!1001 &1105656190
 PrefabInstance:
   m_ObjectHideFlags: 0
