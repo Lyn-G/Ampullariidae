@@ -31,12 +31,15 @@ public class PlayerController : MonoBehaviour
     private bool sideFacing = false;
     private bool flipped = false;
     private int attacking; //0 is no attack; 1 is punch; 2 is uppercut
-    //it is way too much of a hassle to have a bunch of individual bools for EVERY ATTACK.
+                           //it is way too much of a hassle to have a bunch of individual bools for EVERY ATTACK.
 
-   
+
 
     void Start()
     {
+        // Sync flipped state
+        flipped = playerSprite.flipX;
+
         GameObject playerBody = transform.GetChild(0).gameObject;
         // Get the Rigidbody, Animation, SpriteRenderer component from the player game object
         if (rb == null)
@@ -69,7 +72,7 @@ public class PlayerController : MonoBehaviour
         // Handle player movement
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
-        
+
 
         //animations
         CheckDirection();
@@ -93,7 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         while (true)
         {
-            if(attacking == 0)
+            if (attacking == 0)
             {
                 //attacking determines animation: 0 is no attack; 1 is punch; 2 is uppercut, 3 is thrust; 4 is slash; 5 is hand thrust.
                 if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -115,7 +118,7 @@ public class PlayerController : MonoBehaviour
                     }
 
                     //after 0.83s, end attack animation
-                    
+
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
@@ -138,7 +141,7 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
                     //ranged weapon attack - either Tome or Staff
-                    if(currentRangeWeapon.type == "Tome")
+                    if (currentRangeWeapon.type == "Tome")
                     {
                         attacking = 5;
                         mediumRange.GetComponent<CombatRange>().DamageToRange(currentRangeWeapon.minPower, currentRangeWeapon.maxPower, 0.2f);
@@ -168,7 +171,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-            
+
             yield return new WaitForSeconds(0.001f);
         }
     }
@@ -215,27 +218,44 @@ public class PlayerController : MonoBehaviour
         return true;
     }
 
+    // void FlipSprite(float moveHorizontal)
+    // {
+    //     // If moving right and the sprite is facing left, flip the sprite by adjusting its localScale
+    //     if (moveHorizontal > 0 && !flipped)
+    //     {
+    //         playerSprite.flipX = true;
+    //         flipped = !flipped;
+    //     }
+    //     // If moving left and the sprite is facing right, flip the sprite to face left
+    //     else if (moveHorizontal < 0 && flipped)
+    //     {
+    //         playerSprite.flipX = false;
+    //         flipped = !flipped;
+    //     }
+    //     // If not moving horizontally, no need to flip the sprite
+    // }
+
     void FlipSprite(float moveHorizontal)
     {
-        // If moving right and the sprite is facing left, flip the sprite by adjusting its localScale
-        if (moveHorizontal > 0 && !flipped)
+        // Check for moving right
+        if (moveHorizontal < 0)
+        {
+            playerSprite.flipX = false; // Assuming right is the default orientation
+            flipped = false;
+        }
+        // Check for moving left
+        else if (moveHorizontal > 0)
         {
             playerSprite.flipX = true;
-            flipped = !flipped;
+            flipped = true;
         }
-        // If moving left and the sprite is facing right, flip the sprite to face left
-        else if (moveHorizontal < 0 && flipped)
-        {
-            playerSprite.flipX = false;
-            flipped = !flipped;
-        }
-        // If not moving horizontally, no need to flip the sprite
     }
+
 
     //get which direction the player is facing, use for animations
     private void CheckDirection()
     {
-        if(moveVertical != 0)
+        if (moveVertical != 0)
         {
             sideFacing = false;
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class bossScript : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class bossScript : MonoBehaviour
     public float knockbackForce;
     public int health;
     public GameObject hurtparticle;
+
+    // int scene index for scene switch
+    public int scene; 
 
     // Start is called before the first frame update
     void Start()
@@ -101,6 +105,8 @@ public class bossScript : MonoBehaviour
 
     void die()
     {
+        //scene transition
+        SceneManager.LoadScene(scene);
         gameObject.SetActive(false);
     }
 
